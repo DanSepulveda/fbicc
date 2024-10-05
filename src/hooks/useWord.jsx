@@ -45,7 +45,6 @@ const spellWord = (word = '') => {
   return spelling.join(' ')
 }
 
-// TODO: check styles
 export const useWord = (initData) => {
   const [words, setWords] = useState([])
   const [selected, setSelected] = useState({
