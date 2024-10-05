@@ -246,7 +246,19 @@ export const useFamily = () => {
     relation: []
   })
   const [answers, setAnswers] = useState([])
-  const [toggle, setToggle] = useState(true)
+
+  const getNewRelation = () => {
+    const [person1, person2] = getMembers()
+    const relation = relationShips[person1][person2]
+
+    setRelation({
+      me: person1,
+      member: person2,
+      relation
+    })
+
+    setAnswers(createAnswers(relation))
+  }
 
   const checkAnswer = (userAnswer) => {
     if (relation.relation.includes(userAnswer)) {
@@ -270,21 +282,12 @@ export const useFamily = () => {
       wrongSound.play()
     }
 
-    setToggle(!toggle)
+    getNewRelation()
   }
 
   useEffect(() => {
-    const [person1, person2] = getMembers()
-    const relation = relationShips[person1][person2]
-
-    setRelation({
-      me: person1,
-      member: person2,
-      relation
-    })
-
-    setAnswers(createAnswers(relation))
-  }, [toggle])
+    getNewRelation()
+  }, [])
 
   return { relation, answers, checkAnswer }
 }
