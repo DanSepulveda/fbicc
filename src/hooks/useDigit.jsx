@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { getRandomNumber } from '../lib/getRandom'
 import { numberToText } from '../lib/getTextNumber'
 import { correctSound, wrongSound } from '../lib/sounds'
+import { formatText, isNumber, isString } from '../lib/tools'
 import Toast from '../components/Toast'
 
 export const useDigit = () => {
@@ -21,11 +22,9 @@ export const useDigit = () => {
   }
 
   const checkAnswer = (userAnswer) => {
-    console.log(typeof userAnswer)
     if (
-      (typeof userAnswer === 'string' &&
-        userAnswer.toLowerCase().trim() === selected.text.toLowerCase().trim()) ||
-      (typeof userAnswer === 'number' && userAnswer === selected.digit)
+      (isString(userAnswer) && formatText(userAnswer) === formatText(selected.text)) ||
+      (isNumber(userAnswer) && userAnswer === selected.digit)
     ) {
       toast.success('Correct!')
       correctSound.play()
@@ -39,7 +38,7 @@ export const useDigit = () => {
             <p className="font-medium text-lg">
               Right answer:{' '}
               <span className="text-green-700 font-normal">
-                {typeof userAnswer === 'string' ? selected.text : selected.digit}
+                {isString(userAnswer) ? selected.text : selected.digit}
               </span>
             </p>
           </Toast>
