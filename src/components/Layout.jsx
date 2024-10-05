@@ -9,7 +9,7 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-dvh">
-      <Toaster />
+      <Toaster position="top-right" />
       <header className="bg-gray-800 text-white p-3 flex items-center justify-between">
         <div className="flex items-center">
           <img
