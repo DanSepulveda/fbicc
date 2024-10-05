@@ -6,6 +6,7 @@ import NumberToText from '../pages/Numbers/NumberToText'
 import NumberLayout from '../pages/Numbers/NumberLayout'
 import TextToNumber from '../pages/Numbers/TextToNumber'
 import AudioToText from '../pages/Numbers/AudioToNumber'
+import Family from '../pages/Family'
 
 export const router = createBrowserRouter([
   {
@@ -43,6 +44,11 @@ export const router = createBrowserRouter([
             handle: { title: 'Audio to number' }
           }
         ]
+      },
+      {
+        path: '/family',
+        element: <Family />,
+        handle: { title: 'Family' }
       }
     ]
   }
