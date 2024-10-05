@@ -28,7 +28,7 @@ const Layout = () => {
           </Link>
         </nav>
       </header>
-      <h1 className="text-center text-2xl font-ubuntu font-semibold py-1 bg-yellow-500 text-gray-900">
+      <h1 className="text-2xl font-ubuntu font-semibold py-1 px-3 bg-yellow-500 text-gray-900">
         {title}
       </h1>
 
