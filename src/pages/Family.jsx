@@ -54,7 +54,7 @@ const Family = () => {
             data-tooltip-content="saya = I"
           >
             Saya
-            <FaRegCircleQuestion className="inline ml-1" />
+            <FaRegCircleQuestion className="inline ml-1 text-sm" />
           </p>
         </div>
         <div className="flex gap-1">
@@ -65,7 +65,7 @@ const Family = () => {
             data-tooltip-content="anggota keluarga = family member"
           >
             Anggota keluarga
-            <FaRegCircleQuestion className="inline ml-1" />
+            <FaRegCircleQuestion className="inline ml-1 text-sm" />
           </p>
         </div>
       </div>
