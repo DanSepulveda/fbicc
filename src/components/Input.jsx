@@ -13,6 +13,10 @@ const Input = ({ label, name, type = 'text', message = '', ...props }) => {
         type={type}
         name={name}
         id={name}
+        autoComplete="off"
+        autoCapitalize="off"
+        autoCorrect="off"
+        spellCheck="false"
         {...props}
       />
       <div className="mt-0.5 pl-1.5 font-medium text-gray-800">{message}</div>
