@@ -14,8 +14,6 @@ const TimeToText = () => {
     event.target.focus()
   }
 
-  console.log(selected)
-
   return (
     <div>
       <Box
