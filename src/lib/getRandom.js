@@ -16,3 +16,12 @@ export const shuffleArray = (array) => {
   }
   return array
 }
+
+export const getRandomTime = () => {
+  const hour = getRandomNumber(1, 12)
+  const minute = getRandomNumber(0, 59)
+
+  const formattedMinute = minute < 10 ? '0' + minute : minute
+
+  return `${hour}:${formattedMinute}`
+}
