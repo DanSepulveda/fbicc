@@ -51,7 +51,7 @@ const Family = () => {
           <p
             className="font-medium text-gray-700 select-none"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="I"
+            data-tooltip-content="saya = I"
           >
             Saya
             <FaRegCircleQuestion className="inline ml-1" />
@@ -62,7 +62,7 @@ const Family = () => {
           <p
             className="font-medium text-gray-700 select-none"
             data-tooltip-id="my-tooltip"
-            data-tooltip-content="Family member"
+            data-tooltip-content="anggota keluarga = family member"
           >
             Anggota keluarga
             <FaRegCircleQuestion className="inline ml-1" />
