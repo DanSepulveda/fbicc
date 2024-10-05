@@ -1,8 +1,11 @@
 import { Toaster } from 'react-hot-toast'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, Outlet, useMatches } from 'react-router-dom'
 
 const Layout = () => {
   const currentYear = new Date().getFullYear()
+
+  const matches = useMatches()
+  const title = matches[matches.length - 1].handle.title
 
   return (
     <div className="flex flex-col h-dvh">
@@ -25,8 +28,11 @@ const Layout = () => {
           </Link>
         </nav>
       </header>
+      <h1 className="text-center text-2xl font-ubuntu font-semibold py-1 bg-yellow-500 text-gray-900">
+        {title}
+      </h1>
 
-      <main className="flex-grow p-3 bg-gray-100">
+      <main className="flex-grow p-4 px-1.5 bg-gray-100">
         <Outlet />
       </main>
 
