@@ -32,8 +32,10 @@ const Layout = () => {
         {title}
       </h1>
 
-      <main className="flex-grow p-4 px-1.5 bg-gray-100">
-        <Outlet />
+      <main className="flex-grow p-4 px-1.5 md:px-5 bg-gray-100">
+        <div className="max-w-screen-xl mx-auto">
+          <Outlet />
+        </div>
       </main>
 
       <footer className="bg-gray-800 text-white p-2">
