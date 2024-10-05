@@ -3,6 +3,7 @@ import toast from 'react-hot-toast'
 import Toast from '../components/Toast'
 import { randomFromArray } from '../lib/getRandom'
 import { correctSound, wrongSound } from '../lib/sounds'
+import { formatText } from '../lib/tools'
 
 const alphabet = {
   a: 'a',
@@ -67,7 +68,7 @@ export const useWord = (initData) => {
   }
 
   const checkAnswer = (userAnswer) => {
-    if (userAnswer.toLowerCase().trim() === selected.spelling.toLowerCase().trim()) {
+    if (formatText(userAnswer) === formatText(selected.spelling)) {
       toast.success('Correct!')
       correctSound.play()
     } else {
@@ -75,7 +76,8 @@ export const useWord = (initData) => {
         (t) => (
           <Toast t={t}>
             <p className="font-medium text-lg">
-              Your answer: <span className="text-red-700 font-normal">{userAnswer}</span>{' '}
+              Your answer:{' '}
+              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
             </p>
             <p className="font-medium text-lg">
               Right answer: <span className="text-green-700 font-normal">{selected.spelling}</span>
