@@ -2,6 +2,8 @@ import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
+import { Tooltip } from 'react-tooltip'
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()
@@ -16,8 +18,16 @@ const TimeToText = () => {
 
   return (
     <div>
+      <Tooltip id="my-tooltip" />
       <Box
-        title="TIME"
+        title={
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="waktu = time"
+          >
+            WAKTU <FaRegCircleQuestion className="inline text-sm -mt-1" />
+          </span>
+        }
         text={selected.digit}
       />
       <form
@@ -25,10 +35,23 @@ const TimeToText = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label="Your answer"
+          label={
+            <span
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="jabawan = answer"
+            >
+              Jabawan <FaRegCircleQuestion className="inline text-sm" />
+            </span>
+          }
           name="time"
-          placeholder="Example: jam dua lebih tiga puluh satu"
-          message="When possible use lebih or kurang otherwise your response will be considerated wrong"
+          placeholder="Contoh: jam dua lebih tiga puluh satu"
+          message={
+            <span>
+              When possible use <span className="font-bold text-green-700">lebih</span> or{' '}
+              <span className="font-bold text-green-700">kurang</span> otherwise your response will
+              be considerated wrong
+            </span>
+          }
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>

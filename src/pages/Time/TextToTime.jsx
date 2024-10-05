@@ -2,6 +2,8 @@ import { useTime } from '../../hooks/useTime'
 import { getRandomNumber } from '../../lib/getRandom'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
+import { Tooltip } from 'react-tooltip'
 
 const TextToTime = () => {
   const { selected, checkAnswer, answers } = useTime()
@@ -13,8 +15,16 @@ const TextToTime = () => {
 
   return (
     <div>
+      <Tooltip id="my-tooltip" />
       <Box
-        title="TIME"
+        title={
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="waktu = time"
+          >
+            WAKTU <FaRegCircleQuestion className="inline text-sm -mt-1" />
+          </span>
+        }
         text={selected.text[getRandomNumber(0, selected.text.length - 1)]}
       />
       <div className="grid grid-cols-2 mt-3 max-w-md mx-auto gap-2">
