@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
+import { Tooltip } from 'react-tooltip'
 import { useFamily } from '../hooks/useFamily'
 import Button from '../components/Button'
 
@@ -42,14 +44,29 @@ const Family = () => {
 
   return (
     <div>
+      <Tooltip id="my-tooltip" />
       <div className="flex gap-5 mb-1 justify-center">
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-green-500 rounded border"></div>
-          <p className="font-medium text-gray-700">Me</p>
+          <p
+            className="font-medium text-gray-700 select-none"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="I"
+          >
+            Saya
+            <FaRegCircleQuestion className="inline ml-1" />
+          </p>
         </div>
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-orange-400 rounded border"></div>
-          <p className="font-medium text-gray-700">Family member</p>
+          <p
+            className="font-medium text-gray-700 select-none"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="Family member"
+          >
+            Anggota keluarga
+            <FaRegCircleQuestion className="inline ml-1" />
+          </p>
         </div>
       </div>
       <div className="flex flex-col items-center gap-1">

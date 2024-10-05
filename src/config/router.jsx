@@ -49,10 +49,11 @@ export const router = createBrowserRouter([
           }
         ]
       },
+      // OK
       {
         path: '/family',
         element: <Family />,
-        handle: { title: 'Family' }
+        handle: { title: 'Keluarga (family)' }
       },
       {
         path: '/time',
