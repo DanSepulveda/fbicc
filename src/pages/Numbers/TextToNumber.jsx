@@ -3,13 +3,13 @@ import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 
-const NumberToText = () => {
+const TextToNumber = () => {
   const { selected, checkAnswer } = useDigit()
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const userAnswer = event.target.elements.number.value
-    checkAnswer(userAnswer)
+    checkAnswer(Number(userAnswer))
     event.target.reset()
     event.target.focus()
   }
@@ -17,8 +17,8 @@ const NumberToText = () => {
   return (
     <div>
       <Box
-        title="NUMBER"
-        text={selected.digit}
+        title="TEXT"
+        text={selected.text}
       />
       <form
         className="flex flex-col gap-4"
@@ -27,7 +27,8 @@ const NumberToText = () => {
         <Input
           label="Your answer"
           name="number"
-          placeholder="Example: dua puluh lima"
+          type="number"
+          placeholder="Example: 749"
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>
@@ -37,4 +38,4 @@ const NumberToText = () => {
   )
 }
 
-export default NumberToText
+export default TextToNumber

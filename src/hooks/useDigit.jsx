@@ -1,7 +1,7 @@
+import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 import { getRandomNumber } from '../lib/getRandom'
 import { numberToText } from '../lib/getTextNumber'
-import toast from 'react-hot-toast'
 import { correctSound, wrongSound } from '../lib/sounds'
 import Toast from '../components/Toast'
 
@@ -21,7 +21,12 @@ export const useDigit = () => {
   }
 
   const checkAnswer = (userAnswer) => {
-    if (userAnswer.toLowerCase().trim() === selected.text.toLowerCase().trim()) {
+    console.log(typeof userAnswer)
+    if (
+      (typeof userAnswer === 'string' &&
+        userAnswer.toLowerCase().trim() === selected.text.toLowerCase().trim()) ||
+      (typeof userAnswer === 'number' && userAnswer === selected.digit)
+    ) {
       toast.success('Correct!')
       correctSound.play()
     } else {
@@ -29,10 +34,13 @@ export const useDigit = () => {
         (t) => (
           <Toast t={t}>
             <p className="font-medium text-lg">
-              Your answer: <span className="text-red-700">{userAnswer}</span>{' '}
+              Your answer: <span className="text-red-700 font-normal">{userAnswer}</span>{' '}
             </p>
             <p className="font-medium text-lg">
-              Right answer: <span className="text-green-700">{selected.spelling}</span>
+              Right answer:{' '}
+              <span className="text-green-700 font-normal">
+                {typeof userAnswer === 'string' ? selected.text : selected.digit}
+              </span>
             </p>
           </Toast>
         ),
