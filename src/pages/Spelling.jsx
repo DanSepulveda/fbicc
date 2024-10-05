@@ -4,6 +4,7 @@ import Button from '../components/Button'
 import Input from '../components/Input'
 import Title from '../components/Title'
 
+// TODO: check styles
 const Spelling = () => {
   const [data] = useFetch([], '/data/words.json')
   const { selected, checkAnswer } = useWord(data)
