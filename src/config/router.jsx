@@ -7,7 +7,6 @@ import NumberLayout from '../pages/Numbers/NumberLayout'
 import TextToNumber from '../pages/Numbers/TextToNumber'
 import TextToTime from '../pages/Time/TextToTime'
 import TimeToText from '../pages/Time/TimeToText'
-import TimeActions from '../pages/Time/TimeActions'
 import AudioToText from '../pages/Numbers/AudioToNumber'
 import Family from '../pages/Family'
 import Positions from '../pages/Positions'
@@ -69,11 +68,6 @@ export const router = createBrowserRouter([
             path: 'time-to-text',
             element: <TimeToText />,
             handle: { title: 'Time to text' }
-          },
-          {
-            path: 'time-actions',
-            element: <TimeActions />,
-            handle: { title: 'Actions time' }
           }
         ]
       },

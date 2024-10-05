@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { NavLink, Outlet } from 'react-router-dom'
-import { FaArrowRightLong, FaArrowDown, FaRegClock, FaQuestion } from 'react-icons/fa6'
+import { FaArrowRightLong, FaArrowDown, FaRegClock } from 'react-icons/fa6'
 import { MdAbc } from 'react-icons/md'
 
 const Selector = ({ to, before, after, arrow = true }) => {
@@ -29,7 +29,7 @@ const TimeLayout = () => {
           Choose one
           <FaArrowDown />
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-2">
           <Selector
             to="/time/time-to-text"
             before={<FaRegClock className="text-xl" />}
@@ -39,12 +39,6 @@ const TimeLayout = () => {
             to="/time/text-to-time"
             before={<MdAbc className="text-5xl" />}
             after={<FaRegClock className="text-xl" />}
-          />
-          <Selector
-            to="/time/time-actions"
-            before={<FaRegClock className="text-xl" />}
-            after={<FaQuestion className="text-xl" />}
-            arrow={false}
           />
         </div>
       </div>

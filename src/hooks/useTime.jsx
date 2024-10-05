@@ -1,16 +1,30 @@
 import { useEffect, useState } from 'react'
-import { getRandomTime } from '../lib/getRandom'
-import { timeToText } from '../lib/getTextTime'
 import toast from 'react-hot-toast'
+import { getRandomTime, shuffleArray } from '../lib/getRandom'
+import { timeToText } from '../lib/getTextTime'
 import { correctSound, wrongSound } from '../lib/sounds'
-import Toast from '../components/Toast'
 import { formatText } from '../lib/tools'
+import Toast from '../components/Toast'
+
+const createAnswers = (correctAnswer) => {
+  let answers = []
+  answers.push(correctAnswer)
+  const hour = Number(correctAnswer.split(':')[0])
+  const minute = Number(correctAnswer.split(':')[1])
+  const number = hour === 12 ? 1 : hour + 1
+  answers.push(`${number}:${minute < 10 ? '0' + minute : minute}`)
+  answers.push(`${hour}:${60 - minute < 10 ? '0' + 60 - minute : 60 - minute}`)
+  answers.push(`${number}:${60 - minute < 10 ? '0' + 60 - minute : 60 - minute}`)
+
+  return shuffleArray(answers)
+}
 
 export const useTime = () => {
   const [selected, setSelected] = useState({
     digit: '',
     text: []
   })
+  const [answers, setAnswers] = useState([])
 
   const getNewTime = () => {
     const time = getRandomTime()
@@ -19,10 +33,12 @@ export const useTime = () => {
       digit: time,
       text: timeToText(time)
     })
+
+    setAnswers(createAnswers(time))
   }
 
   const checkAnswer = (userAnswer) => {
-    if (selected.text.includes(formatText(userAnswer))) {
+    if (selected.text.includes(formatText(userAnswer)) || selected.digit === userAnswer) {
       toast.success('Correct!')
       correctSound.play()
     } else {
@@ -35,7 +51,9 @@ export const useTime = () => {
             </p>
             <p className="font-medium text-lg">
               Right answer:{' '}
-              <span className="text-green-700 font-normal">{selected.text.join(', ')}</span>
+              <span className="text-green-700 font-normal">
+                {userAnswer.includes(':') ? selected.digit : selected.text.join(', ')}
+              </span>
             </p>
           </Toast>
         ),
@@ -51,5 +69,5 @@ export const useTime = () => {
     getNewTime()
   }, [])
 
-  return { selected, checkAnswer }
+  return { selected, checkAnswer, answers }
 }
