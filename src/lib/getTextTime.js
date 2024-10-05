@@ -14,7 +14,7 @@ export const timeToText = (time) => {
     answers.push(`jam ${numberToText(hour)} lebih ${numberToText(minute)}`)
   }
 
-  if (minute !== 0) {
+  if (minute !== 0 && minute > 30) {
     const number = hour === 12 ? 1 : hour + 1
     answers.push(`jam ${numberToText(number)} kurang ${numberToText(60 - minute)}`)
   }
