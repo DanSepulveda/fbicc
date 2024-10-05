@@ -7,6 +7,7 @@ import NumberLayout from '../pages/Numbers/NumberLayout'
 import TextToNumber from '../pages/Numbers/TextToNumber'
 import AudioToText from '../pages/Numbers/AudioToNumber'
 import Family from '../pages/Family'
+import Positions from '../pages/Positions'
 
 export const router = createBrowserRouter([
   {
@@ -49,6 +50,11 @@ export const router = createBrowserRouter([
         path: '/family',
         element: <Family />,
         handle: { title: 'Family' }
+      },
+      {
+        path: '/positions',
+        element: <Positions />,
+        handle: { title: 'Positions' }
       }
     ]
   }

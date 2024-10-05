@@ -246,7 +246,7 @@ export const useFamily = () => {
     relation: []
   })
   const [answers, setAnswers] = useState([])
-  const [toogle, setToogle] = useState(true)
+  const [toggle, setToggle] = useState(true)
 
   const checkAnswer = (userAnswer) => {
     if (relation.relation.includes(userAnswer)) {
@@ -270,7 +270,7 @@ export const useFamily = () => {
       wrongSound.play()
     }
 
-    setToogle(!toogle)
+    setToggle(!toggle)
   }
 
   useEffect(() => {
@@ -284,7 +284,7 @@ export const useFamily = () => {
     })
 
     setAnswers(createAnswers(relation))
-  }, [toogle])
+  }, [toggle])
 
   return { relation, answers, checkAnswer }
 }

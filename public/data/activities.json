@@ -5,13 +5,29 @@
     "link": "/spelling"
   },
   {
+    "name": "Family",
+    "image": "family.png",
+    "link": "/family"
+  },
+  {
     "name": "Numbers",
     "image": "numbers.png",
     "link": "/numbers"
   },
   {
     "name": "Date",
-    "image": "numbers.png",
-    "link": "/numbers"
+    "image": "calendar.png",
+    "link": "/dates"
+  },
+
+  {
+    "name": "Positions",
+    "image": "radar.png",
+    "link": "/positions"
+  },
+  {
+    "name": "Directions",
+    "image": "directions.png",
+    "link": "/directions"
   }
 ]
