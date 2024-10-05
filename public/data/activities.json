@@ -1,0 +1,17 @@
+[
+  {
+    "name": "Spelling",
+    "image": "alphabet.png",
+    "link": "/spelling"
+  },
+  {
+    "name": "Numbers",
+    "image": "numbers.png",
+    "link": "/numbers"
+  },
+  {
+    "name": "Date",
+    "image": "numbers.png",
+    "link": "/numbers"
+  }
+]
