@@ -2,6 +2,8 @@ import { useDigit } from '../../hooks/useDigit'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
+import { Tooltip } from 'react-tooltip'
 
 const NumberToText = () => {
   const { selected, checkAnswer } = useDigit()
@@ -16,8 +18,16 @@ const NumberToText = () => {
 
   return (
     <div>
+      <Tooltip id="my-tooltip" />
       <Box
-        title="NUMBER"
+        title={
+          <span
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="angka = number"
+          >
+            ANGKA <FaRegCircleQuestion className="inline text-sm -mt-1" />
+          </span>
+        }
         text={selected.digit}
       />
       <form
@@ -25,9 +35,16 @@ const NumberToText = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label="Your answer"
+          label={
+            <span
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content="jabawan = answer"
+            >
+              Jabawan <FaRegCircleQuestion className="inline text-sm" />
+            </span>
+          }
           name="number"
-          placeholder="Example: dua puluh lima"
+          placeholder="Contoh: dua puluh lima"
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>
