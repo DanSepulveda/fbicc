@@ -1,3 +1,4 @@
+import { Toaster } from 'react-hot-toast'
 import { Link, Outlet } from 'react-router-dom'
 
 const Layout = () => {
@@ -5,10 +6,11 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col h-dvh">
+      <Toaster />
       <header className="bg-gray-800 text-white p-3 flex items-center justify-between">
         <div className="flex items-center">
           <img
-            src="/indonesia-flag.png"
+            src="/images/indonesia-flag.png"
             alt="Indonesia Flag"
             className="h-8 mr-2"
           />
