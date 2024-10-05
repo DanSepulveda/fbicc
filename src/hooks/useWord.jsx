@@ -63,7 +63,8 @@ export const useWord = (initData) => {
   }
 
   const deleteWord = (deletedWord) => {
-    setWords(words.filter((word) => word !== deletedWord))
+    const remaining = words.filter((word) => word !== deletedWord)
+    remaining.length ? setWords(remaining) : setWords(initData)
   }
 
   const checkAnswer = (userAnswer) => {
@@ -75,14 +76,14 @@ export const useWord = (initData) => {
         (t) => (
           <Toast t={t}>
             <p className="font-medium text-lg">
-              Your answer: <span className="text-red-700">{userAnswer}</span>{' '}
+              Your answer: <span className="text-red-700 font-normal">{userAnswer}</span>{' '}
             </p>
             <p className="font-medium text-lg">
-              Right answer: <span className="text-green-700">{selected.spelling}</span>
+              Right answer: <span className="text-green-700 font-normal">{selected.spelling}</span>
             </p>
           </Toast>
         ),
-        { duration: Infinity }
+        { duration: 6000 }
       )
       wrongSound.play()
     }
