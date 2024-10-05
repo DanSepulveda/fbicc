@@ -12,7 +12,7 @@ export const useDigit = () => {
   })
 
   const getNewNumber = () => {
-    const number = getRandomNumber(1000)
+    const number = getRandomNumber(0, 1000)
 
     setSelected({
       digit: number,

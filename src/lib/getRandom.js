@@ -3,6 +3,6 @@ export const randomFromArray = (list) => {
   return list[random]
 }
 
-export const getRandomNumber = (number) => {
-  return Math.floor(Math.random() * (number + 1))
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
 }
