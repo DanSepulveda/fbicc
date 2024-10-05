@@ -33,7 +33,8 @@ export const useDigit = () => {
         (t) => (
           <Toast t={t}>
             <p className="font-medium text-lg">
-              Your answer: <span className="text-red-700 font-normal">{userAnswer}</span>{' '}
+              Your answer:{' '}
+              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
             </p>
             <p className="font-medium text-lg">
               Right answer:{' '}
