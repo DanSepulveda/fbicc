@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 
-export const useFetch = (initial, url) => {
+export const useFetch = (url, initial = []) => {
   const [data, setData] = useState(initial)
+  const [loading, setLoading] = useState(true)
 
   const fetchData = async (url) => {
     try {
@@ -11,6 +12,7 @@ export const useFetch = (initial, url) => {
     } catch (e) {
       console.log(e)
     }
+    setLoading(false)
   }
 
   useEffect(() => {
@@ -18,5 +20,5 @@ export const useFetch = (initial, url) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return [data, setData]
+  return [data, loading]
 }
