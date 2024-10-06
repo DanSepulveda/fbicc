@@ -8,7 +8,7 @@ const Layout = () => {
   const title = matches[matches.length - 1].handle.title
 
   return (
-    <div className="flex flex-col h-dvh">
+    <div className="flex flex-col h-dvh max-w-3xl mx-auto">
       <Toaster position="top-right" />
       <header className="bg-gray-800 text-white p-3 flex items-center justify-between">
         <div className="flex items-center">
