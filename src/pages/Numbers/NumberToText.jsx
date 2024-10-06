@@ -6,7 +6,7 @@ import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { Tooltip } from 'react-tooltip'
 
 const NumberToText = () => {
-  const { selected, checkAnswer } = useDigit()
+  const { selected, checkAnswer, limit, setLimit } = useDigit()
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -19,6 +19,20 @@ const NumberToText = () => {
   return (
     <div>
       <Tooltip id="my-tooltip" />
+      <div className="flex gap-2.5 border-2 border-gray-700 rounded py-2 px-1.5 mb-4">
+        <div className="flex flex-col justify-center items-center text-lg font-medium text-gray-800">
+          <span>Sampai</span>
+          <span>{limit}</span>
+        </div>
+        <input
+          type="range"
+          min={100}
+          max={9999}
+          value={limit}
+          className="w-full"
+          onChange={(event) => setLimit(event.target.value)}
+        />
+      </div>
       <Box
         title={
           <span
@@ -30,6 +44,7 @@ const NumberToText = () => {
         }
         text={selected.digit}
       />
+
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit}

@@ -11,9 +11,10 @@ export const useDigit = () => {
     digit: null,
     text: ''
   })
+  const [limit, setLimit] = useState(1000)
 
   const getNewNumber = () => {
-    const number = getRandomNumber(0, 1000)
+    const number = getRandomNumber(0, limit)
 
     setSelected({
       digit: number,
@@ -54,7 +55,8 @@ export const useDigit = () => {
 
   useEffect(() => {
     getNewNumber()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  return { selected, checkAnswer }
+  return { selected, checkAnswer, limit, setLimit }
 }
