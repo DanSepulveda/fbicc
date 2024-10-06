@@ -7,3 +7,10 @@
     font-family: 'Roboto', system-ui, sans-serif;
   }
 }
+
+body {
+  background-image: url('/images/flag.jpg');
+  background-size: cover;
+  background-position: center center;
+  backdrop-filter: blur(30px);
+}
