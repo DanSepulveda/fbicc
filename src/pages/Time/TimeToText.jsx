@@ -11,9 +11,11 @@ const TimeToText = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const userAnswer = event.target.elements.time.value
-    checkAnswer(userAnswer)
-    event.target.reset()
-    event.target.focus()
+    if (userAnswer) {
+      checkAnswer(userAnswer)
+      event.target.reset()
+      event.target.focus()
+    }
   }
 
   return (

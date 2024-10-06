@@ -48,11 +48,9 @@ export const useTime = () => {
       toast.custom(
         (t) => (
           <Toast t={t}>
-            {userAnswer.includes(':') ? (
-              <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
-                {selected.displayText}
-              </p>
-            ) : null}
+            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
+              {userAnswer.includes(':') ? selected.displayText : selected.digit}
+            </p>
             <p className="font-medium text-lg">
               Your answer:{' '}
               <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>
