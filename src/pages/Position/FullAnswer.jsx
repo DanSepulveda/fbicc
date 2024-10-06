@@ -1,5 +1,4 @@
 import { Tooltip } from 'react-tooltip'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { usePosition } from '../../hooks/usePosition'
 import { useListeners } from '../../hooks/useListener'
 import DisplayBox from './DisplayBox'
@@ -37,10 +36,11 @@ const FullAnswer = () => {
         <Input
           label={
             <span
+              className="underline select-none"
               data-tooltip-id="my-tooltip"
               data-tooltip-content="jabawan = answer"
             >
-              Jabawan <FaRegCircleQuestion className="inline text-sm" />
+              Jabawan
             </span>
           }
           name="position"

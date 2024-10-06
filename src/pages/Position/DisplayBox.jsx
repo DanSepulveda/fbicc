@@ -1,3 +1,5 @@
+import { Tooltip } from 'react-tooltip'
+
 /* eslint-disable react/prop-types */
 const DisplayBox = ({ main, position, secondary }) => {
   const styles = {
@@ -19,12 +21,16 @@ const DisplayBox = ({ main, position, secondary }) => {
 
   return (
     <div>
+      <Tooltip id="my-tooltip" />
       <div className={`min-h-52 flex justify-center items-center ${styles[position]}`}>
         {position === 'diantara' ? (
           <div>
             <img
               className={`${size} ${posSecondary} ${secondaryDepan}`}
               src={`/images/${secondary.image}`}
+              alt={secondary.english}
+              data-tooltip-id="my-tooltip"
+              data-tooltip-content={`${secondary.name} = ${secondary.english}`}
             />
           </div>
         ) : null}
@@ -32,12 +38,18 @@ const DisplayBox = ({ main, position, secondary }) => {
           <img
             className={`${size} ${posMain} ${mainDepan}`}
             src={`/images/${main.image}`}
+            alt={main.english}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={`${main.name} = ${main.english}`}
           />
         </div>
         <div>
           <img
             className={`${size} ${posSecondary} ${secondaryDepan}`}
             src={`/images/${secondary.image}`}
+            alt={secondary.english}
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={`${secondary.name} = ${secondary.english}`}
           />
         </div>
       </div>

@@ -23,8 +23,21 @@ const MultipleChoice = () => {
       </Box>
 
       <p className="text-center text-2xl font-medium">
-        {selected.main.name} itu di <span className="bg-green-200">_____</span>{' '}
-        {selected.secondary.name}
+        <span
+          className="underline select-none"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={selected.main.english}
+        >
+          {selected.main.name}
+        </span>{' '}
+        itu di <span className="bg-green-200">.......</span>{' '}
+        <span
+          className="underline select-none"
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={selected.secondary.english}
+        >
+          {selected.secondary.name}
+        </span>
       </p>
       <p className="text-center text-sm text-blue-600 mt-3">
         On a computer, you can use the numeric keypad
