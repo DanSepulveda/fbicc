@@ -1,38 +1,10 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import Toast from '../components/Toast'
 import { randomFromArray } from '../lib/getRandom'
 import { correctSound, wrongSound } from '../lib/sounds'
 import { formatText } from '../lib/tools'
-
-const alphabet = {
-  a: 'a',
-  b: 'be',
-  c: 'ce',
-  d: 'de',
-  e: 'e',
-  f: 'ef',
-  g: 'ge',
-  h: 'ha',
-  i: 'i',
-  j: 'je',
-  k: 'ka',
-  l: 'el',
-  m: 'em',
-  n: 'en',
-  o: 'o',
-  p: 'pe',
-  q: 'qi',
-  r: 'er',
-  s: 'es',
-  t: 'te',
-  u: 'u',
-  v: 've',
-  w: 'we',
-  x: 'ex',
-  y: 'ye',
-  z: 'zet'
-}
+import { alphabet, wordsToSpell } from '../data/spellingWords'
+import Toast from '../components/Toast'
 
 const spellWord = (word = '') => {
   const letters = word.split('')
@@ -46,8 +18,8 @@ const spellWord = (word = '') => {
   return spelling.join(' ')
 }
 
-export const useWord = (initData) => {
-  const [words, setWords] = useState([])
+export const useWord = () => {
+  const [words, setWords] = useState(wordsToSpell)
   const [selected, setSelected] = useState({
     word: '',
     spelling: ''
@@ -64,7 +36,7 @@ export const useWord = (initData) => {
 
   const deleteWord = (deletedWord) => {
     const remaining = words.filter((word) => word !== deletedWord)
-    remaining.length ? setWords(remaining) : setWords(initData)
+    remaining.length ? setWords(remaining) : setWords(wordsToSpell)
   }
 
   const checkAnswer = (userAnswer) => {
@@ -75,6 +47,9 @@ export const useWord = (initData) => {
       toast.custom(
         (t) => (
           <Toast t={t}>
+            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
+              {selected.word}
+            </p>
             <p className="font-medium text-lg">
               Your answer:{' '}
               <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
@@ -91,10 +66,6 @@ export const useWord = (initData) => {
 
     deleteWord(selected.word)
   }
-
-  useEffect(() => {
-    setWords(initData)
-  }, [initData])
 
   useEffect(() => {
     getNewWord()

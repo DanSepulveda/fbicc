@@ -1,5 +1,4 @@
 import { FaArrowRightLong, FaRegCircleQuestion } from 'react-icons/fa6'
-import { useFetch } from '../hooks/useFetch'
 import { useWord } from '../hooks/useWord'
 import Button from '../components/Button'
 import Input from '../components/Input'
@@ -7,8 +6,7 @@ import Box from '../components/Box'
 import { Tooltip } from 'react-tooltip'
 
 const Spelling = () => {
-  const [data] = useFetch('/data/words.json')
-  const { selected, checkAnswer } = useWord(data)
+  const { selected, checkAnswer } = useWord()
 
   const handleSubmit = (event) => {
     event.preventDefault()
