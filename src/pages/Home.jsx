@@ -1,18 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useFetch } from '../hooks/useFetch'
-import Loader from '../components/Loader'
+import { exercises } from '../data/exercises'
 
 const Home = () => {
-  const [data, loading] = useFetch('/data/activities.json')
-
-  if (loading) {
-    return <Loader />
-  }
-
   return (
     <div>
       <div className="grid grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5">
-        {data.map((block) => (
+        {exercises.map((block) => (
           <Link
             key={block.name}
             to={block.link}
