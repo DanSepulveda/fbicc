@@ -1,7 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import { FaArrowDown } from 'react-icons/fa6'
 import { Md123, MdAbc } from 'react-icons/md'
-import { PiSpeakerSimpleHighFill } from 'react-icons/pi'
 import Selector from '../../components/Selector'
 
 const NumberLayout = () => {
@@ -13,7 +12,7 @@ const NumberLayout = () => {
           Choose one
           <FaArrowDown />
         </div>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-2">
           <Selector
             to="/numbers/number-to-text"
             before={<Md123 className="text-5xl" />}
@@ -22,11 +21,6 @@ const NumberLayout = () => {
           <Selector
             to="/numbers/text-to-number"
             before={<MdAbc className="text-5xl" />}
-            after={<Md123 className="text-5xl" />}
-          />
-          <Selector
-            to="/numbers/audio-to-number"
-            before={<PiSpeakerSimpleHighFill className="text-2xl" />}
             after={<Md123 className="text-5xl" />}
           />
         </div>

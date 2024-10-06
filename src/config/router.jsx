@@ -3,7 +3,6 @@ import Layout from '../components/Layout'
 import Home from '../pages/Home'
 import Family from '../pages/Family'
 import Spelling from '../pages/Spelling'
-import AudioToText from '../pages/Numbers/AudioToNumber'
 import NumberToText from '../pages/Numbers/NumberToText'
 import NumberLayout from '../pages/Numbers/NumberLayout'
 import TextToNumber from '../pages/Numbers/TextToNumber'
@@ -44,11 +43,6 @@ export const router = createBrowserRouter([
             path: 'number-to-text',
             element: <NumberToText />,
             handle: { title: 'Number to text' }
-          },
-          {
-            path: 'audio-to-number',
-            element: <AudioToText />,
-            handle: { title: 'Audio to number' }
           }
         ]
       },
