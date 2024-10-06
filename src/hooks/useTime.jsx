@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { getRandomTime, shuffleArray } from '../lib/getRandom'
+import { getRandomNumber, getRandomTime, shuffleArray } from '../lib/getRandom'
 import { timeToText } from '../lib/getTextTime'
 import { correctSound, wrongSound } from '../lib/sounds'
 import { formatText } from '../lib/tools'
@@ -22,16 +22,19 @@ const createAnswers = (correctAnswer) => {
 export const useTime = () => {
   const [selected, setSelected] = useState({
     digit: '',
-    text: []
+    text: [],
+    displayText: ''
   })
   const [answers, setAnswers] = useState([])
 
   const getNewTime = () => {
     const time = getRandomTime()
+    const text = timeToText(time)
 
     setSelected({
       digit: time,
-      text: timeToText(time)
+      text,
+      displayText: text[getRandomNumber(0, text.length - 1)]
     })
 
     setAnswers(createAnswers(time))
@@ -45,6 +48,11 @@ export const useTime = () => {
       toast.custom(
         (t) => (
           <Toast t={t}>
+            {userAnswer.includes(':') ? (
+              <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
+                {selected.displayText}
+              </p>
+            ) : null}
             <p className="font-medium text-lg">
               Your answer:{' '}
               <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>

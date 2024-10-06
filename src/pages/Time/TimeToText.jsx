@@ -1,9 +1,9 @@
+import { Tooltip } from 'react-tooltip'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
-import { Tooltip } from 'react-tooltip'
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()
