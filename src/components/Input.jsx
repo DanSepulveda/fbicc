@@ -3,13 +3,13 @@ const Input = ({ label, name, type = 'text', message = '', ...props }) => {
   return (
     <div>
       <label
-        className="block text-gray-800 font-bold mb-0.5 text-center text-lg font-ubuntu"
+        className="block text-gray-800 font-bold mb-0.5 text-lg font-ubuntu"
         htmlFor={name}
       >
         {label}
       </label>
       <input
-        className="shadow appearance-none border rounded w-full py-2 px-3 text-lg text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
+        className="shadow appearance-none border rounded w-full py-2.5 px-3 text-xl text-gray-800 leading-tight focus:outline-none focus:shadow-outline"
         type={type}
         name={name}
         id={name}
