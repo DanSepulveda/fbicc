@@ -25,3 +25,11 @@ export const getRandomTime = () => {
 
   return `${hour}:${formattedMinute}`
 }
+
+export const getRandomDate = (startDate, endDate) => {
+  const start = new Date(startDate).getTime()
+  const end = new Date(endDate).getTime()
+  const randomTime = start + Math.random() * (end - start)
+
+  return new Date(randomTime)
+}

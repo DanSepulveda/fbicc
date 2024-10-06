@@ -15,9 +15,9 @@ export const exercises = [
     link: '/numbers'
   },
   {
-    name: 'Date',
+    name: 'Tanggal',
     image: 'calendar.png',
-    link: '/dates'
+    link: '/date'
   },
   {
     name: 'Waktu',

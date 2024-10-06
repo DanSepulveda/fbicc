@@ -13,6 +13,7 @@ import TextToTime from '../pages/Time/TextToTime'
 import FullAnswer from '../pages/Position/FullAnswer'
 import MultipleChoice from '../pages/Position/MultipleChoice'
 import PositionLayout from '../pages/Position/PositionLayout'
+import DatePage from '../pages/Date'
 
 export const router = createBrowserRouter([
   {
@@ -89,6 +90,11 @@ export const router = createBrowserRouter([
             handle: { title: 'Multiple choice' }
           }
         ]
+      },
+      {
+        path: '/date',
+        element: <DatePage />,
+        handle: { title: 'Tanggal (date)' }
       }
     ]
   }
