@@ -23,16 +23,26 @@ export const useDigit = () => {
   }
 
   const checkAnswer = (userAnswer) => {
-    if (
-      (isString(userAnswer) && formatText(userAnswer) === formatText(selected.text)) ||
-      (isNumber(userAnswer) && userAnswer === selected.digit)
-    ) {
+    let condition = null
+
+    if (isString(userAnswer)) {
+      condition = formatText(userAnswer) === formatText(selected.text)
+    }
+
+    if (isNumber(userAnswer)) {
+      condition = userAnswer === selected.digit
+    }
+
+    if (condition) {
       toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
         (t) => (
           <Toast t={t}>
+            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
+              {isNumber(userAnswer) ? selected.text : selected.digit}
+            </p>
             <p className="font-medium text-lg">
               Your answer:{' '}
               <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
@@ -45,7 +55,7 @@ export const useDigit = () => {
             </p>
           </Toast>
         ),
-        { duration: Infinity }
+        { duration: 6000 }
       )
       wrongSound.play()
     }
@@ -56,7 +66,7 @@ export const useDigit = () => {
   useEffect(() => {
     getNewNumber()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [limit])
 
   return { selected, checkAnswer, limit, setLimit }
 }

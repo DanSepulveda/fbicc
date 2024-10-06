@@ -1,9 +1,9 @@
+import { Tooltip } from 'react-tooltip'
+import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { useDigit } from '../../hooks/useDigit'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
-import { Tooltip } from 'react-tooltip'
 
 const NumberToText = () => {
   const { selected, checkAnswer, limit, setLimit } = useDigit()
@@ -11,9 +11,11 @@ const NumberToText = () => {
   const handleSubmit = (event) => {
     event.preventDefault()
     const userAnswer = event.target.elements.number.value
-    checkAnswer(userAnswer)
-    event.target.reset()
-    event.target.focus()
+    if (userAnswer) {
+      checkAnswer(userAnswer)
+      event.target.reset()
+      event.target.focus()
+    }
   }
 
   return (

@@ -1,31 +1,14 @@
-/* eslint-disable react/prop-types */
-import { NavLink, Outlet } from 'react-router-dom'
-import { FaArrowRightLong, FaArrowDown } from 'react-icons/fa6'
+import { Outlet } from 'react-router-dom'
+import { FaArrowDown } from 'react-icons/fa6'
 import { Md123, MdAbc } from 'react-icons/md'
 import { PiSpeakerSimpleHighFill } from 'react-icons/pi'
-
-const Selector = ({ to, before, after }) => {
-  return (
-    <NavLink
-      to={to}
-      className={(s) =>
-        `${
-          s.isActive ? 'bg-gray-700 text-white' : 'bg-gray-200'
-        } flex items-center justify-center gap-1 border border-gray-800`
-      }
-    >
-      {before}
-      <FaArrowRightLong />
-      {after}
-    </NavLink>
-  )
-}
+import Selector from '../../components/Selector'
 
 const NumberLayout = () => {
   return (
     <div>
-      <div className=" -mt-4 -mx-1.5">
-        <div className="bg-yellow-500 text-center flex items-center justify-center gap-1 text-ubuntu text-lg">
+      <div>
+        <div className=" text-center flex items-center justify-center gap-1 text-ubuntu text-lg">
           <FaArrowDown />
           Choose one
           <FaArrowDown />

@@ -1,4 +1,4 @@
-export const formatText = (text) => text.toLowerCase().trim()
+export const formatText = (text) => String(text).toLowerCase().trim()
 
 export const isString = (data) => typeof data === 'string'
 
