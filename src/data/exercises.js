@@ -28,10 +28,15 @@ export const exercises = [
     name: 'Poisi',
     image: 'radar.png',
     link: '/position'
-  },
-  {
-    name: 'Directions',
-    image: 'directions.png',
-    link: '/directions'
   }
+  // {
+  //   name: 'Arah',
+  //   image: 'directions.png',
+  //   link: '/directions'
+  // },
+  // {
+  //   name: 'FAQ',
+  //   image: 'question.png',
+  //   link: '/questions'
+  // }
 ]
