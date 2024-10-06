@@ -1,5 +1,4 @@
 import { Tooltip } from 'react-tooltip'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { useDigit } from '../../hooks/useDigit'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
@@ -23,7 +22,13 @@ const TextToNumber = () => {
       <Tooltip id="my-tooltip" />
       <div className="flex gap-2.5 border-2 border-gray-700 rounded py-2 px-1.5 mb-4">
         <div className="flex flex-col justify-center items-center text-lg font-medium text-gray-800">
-          <span>Sampai</span>
+          <span
+            className="underline select-none"
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content="sampai = until"
+          >
+            Sampai
+          </span>
           <span>{limit}</span>
         </div>
         <input
@@ -38,10 +43,11 @@ const TextToNumber = () => {
       <Box
         title={
           <span
+            className="underline select-none"
             data-tooltip-id="my-tooltip"
             data-tooltip-content="teks = text"
           >
-            TEKS <FaRegCircleQuestion className="inline text-sm -mt-1" />
+            TEKS
           </span>
         }
         text={selected.text}
@@ -53,10 +59,11 @@ const TextToNumber = () => {
         <Input
           label={
             <span
+              className="underline select-none"
               data-tooltip-id="my-tooltip"
               data-tooltip-content="jabawan = answer"
             >
-              Jabawan <FaRegCircleQuestion className="inline text-sm" />
+              Jabawan
             </span>
           }
           name="number"

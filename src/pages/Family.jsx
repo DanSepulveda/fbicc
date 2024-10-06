@@ -1,4 +1,3 @@
-import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { Tooltip } from 'react-tooltip'
 import { useFamily } from '../hooks/useFamily'
 import { useListeners } from '../hooks/useListener'
@@ -36,23 +35,21 @@ const Family = () => {
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-green-500 rounded border"></div>
           <p
-            className="font-medium text-gray-700 select-none"
+            className="font-medium text-gray-700 underline select-none"
             data-tooltip-id="my-tooltip"
             data-tooltip-content="saya = I"
           >
             Saya
-            <FaRegCircleQuestion className="inline ml-1 text-sm" />
           </p>
         </div>
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-orange-400 rounded border"></div>
           <p
-            className="font-medium text-gray-700 select-none"
+            className="font-medium text-gray-700 underline select-none"
             data-tooltip-id="my-tooltip"
             data-tooltip-content="anggota keluarga = family member"
           >
             Anggota keluarga
-            <FaRegCircleQuestion className="inline ml-1 text-sm" />
           </p>
         </div>
       </div>

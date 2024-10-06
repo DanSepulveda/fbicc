@@ -1,9 +1,9 @@
-import { FaArrowRightLong, FaRegCircleQuestion } from 'react-icons/fa6'
+import { Tooltip } from 'react-tooltip'
+import { FaArrowRightLong } from 'react-icons/fa6'
 import { useWord } from '../hooks/useWord'
+import Box from '../components/Box'
 import Button from '../components/Button'
 import Input from '../components/Input'
-import Box from '../components/Box'
-import { Tooltip } from 'react-tooltip'
 
 const Spelling = () => {
   const { selected, checkAnswer } = useWord()
@@ -24,10 +24,11 @@ const Spelling = () => {
       <Box
         title={
           <span
+            className="underline select-none"
             data-tooltip-id="my-tooltip"
             data-tooltip-content="kata = word"
           >
-            KATA <FaRegCircleQuestion className="inline text-sm -mt-1" />
+            KATA
           </span>
         }
         text={selected.word}
@@ -39,10 +40,11 @@ const Spelling = () => {
         <Input
           label={
             <span
+              className="underline select-none"
               data-tooltip-id="my-tooltip"
               data-tooltip-content="jabawan = answer"
             >
-              Jabawan <FaRegCircleQuestion className="inline text-sm" />
+              Jabawan
             </span>
           }
           name="spelling"
@@ -50,10 +52,11 @@ const Spelling = () => {
           message={
             <span className="flex items-center gap-2 text-cyan-700">
               <span
+                className="underline select-none"
                 data-tooltip-id="my-tooltip"
                 data-tooltip-content="contoh = example"
               >
-                Contoh <FaRegCircleQuestion className="inline text-sm -ml-0.5" />
+                Contoh
               </span>
               : kabar <FaArrowRightLong />
               ka a be a er

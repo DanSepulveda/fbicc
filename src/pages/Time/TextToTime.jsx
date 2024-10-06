@@ -1,5 +1,4 @@
 import { Tooltip } from 'react-tooltip'
-import { FaRegCircleQuestion } from 'react-icons/fa6'
 import { useListeners } from '../../hooks/useListener'
 import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
@@ -20,10 +19,11 @@ const TextToTime = () => {
       <Box
         title={
           <span
+            className="underline select-none"
             data-tooltip-id="my-tooltip"
             data-tooltip-content="waktu = time"
           >
-            WAKTU <FaRegCircleQuestion className="inline text-sm -mt-1" />
+            WAKTU
           </span>
         }
         text={selected.displayText}
