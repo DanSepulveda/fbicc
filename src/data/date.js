@@ -33,14 +33,7 @@ export const dayPrepositions = {
   }
 }
 
-export const questions = [
-  'Tanggal berapa',
-  'Tanggal berapa',
-  'Tanggal berapa',
-  'Tanggal berapa',
-  'Tanggal berapa',
-  'Hari apa'
-]
+export const questions = ['Tanggal berapa', 'Tanggal berapa', 'Tanggal berapa', 'Hari apa']
 
 export const days = [
   { indonesian: 'minggu', english: 'Sun' },

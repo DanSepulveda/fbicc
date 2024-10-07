@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useScreenshot } from 'use-react-screenshot'
 import { getRandomDate, randomFromArray } from '../lib/getRandom'
 import { dateToText, generateDateRange } from '../lib/rangeDate'
 import { dayPrepositions, days, questions } from '../data/date'
@@ -7,8 +8,10 @@ import { formatText } from '../lib/tools'
 import toast from 'react-hot-toast'
 import { correctSound, wrongSound } from '../lib/sounds'
 import Toast from '../components/Toast'
+import { Tooltip } from 'react-tooltip'
 
 export const useDate = () => {
+  const [image, takeScreenshot] = useScreenshot()
   const [selected, setSelectedDate] = useState()
   const [dates, setDates] = useState([])
   const [empty, setEmpty] = useState([])
@@ -59,8 +62,14 @@ export const useDate = () => {
       toast.custom(
         (t) => (
           <Toast t={t}>
-            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
-              {userAnswer.includes(':') ? selected.displayText : selected.digit}
+            <Tooltip id="my-tooltip" />
+            <img
+              src={image}
+              className="w-full border-b-2 pb-3 mb-3"
+              alt="screenshot"
+            />
+            <p className="text-blue-600 text-center mb-1">
+              What is inside the parentheses is optional.
             </p>
             <p className="font-medium text-lg">
               Your answer:{' '}
@@ -69,14 +78,42 @@ export const useDate = () => {
             <p className="font-medium text-lg">
               Right answer:{' '}
               <span className="text-green-700 font-normal">
-                {question.startsWith('Tanggal')
-                  ? tanggalRightAnswers.join(', ')
-                  : hariRightAnswers.join(', ')}
+                {question.startsWith('Tanggal') ? (
+                  <span>
+                    <span>
+                      (
+                      <span
+                        className="underline select-none"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content={dayPrepositions[when].english}
+                      >
+                        {when}
+                      </span>{' '}
+                      tanggal)
+                    </span>{' '}
+                    {tanggalRightAnswers[0]}
+                  </span>
+                ) : (
+                  <span>
+                    <span>
+                      (
+                      <span
+                        className="underline select-none"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content={dayPrepositions[when].english}
+                      >
+                        {when}
+                      </span>{' '}
+                      hari)
+                    </span>{' '}
+                    {hariRightAnswers[0]}
+                  </span>
+                )}
               </span>
             </p>
           </Toast>
         ),
-        { duration: 6000, id: 'toastid' }
+        { duration: Infinity, id: 'toastid' }
       )
       wrongSound.play()
     }
@@ -88,5 +125,5 @@ export const useDate = () => {
     getNewDay()
   }, [])
 
-  return { selected, dates, checkAnswer, empty, question, when }
+  return { selected, dates, checkAnswer, empty, question, when, takeScreenshot }
 }

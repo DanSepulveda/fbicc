@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useRef } from 'react'
 import { format, getMonth, getYear } from 'date-fns'
 import { Tooltip } from 'react-tooltip'
 import { FaCircleQuestion } from 'react-icons/fa6'
@@ -8,10 +10,15 @@ import Button from '../components/Button'
 import Input from '../components/Input'
 
 const DatePage = () => {
-  const { selected, dates, empty, question, when, checkAnswer } = useDate()
+  const { selected, dates, empty, question, when, checkAnswer, takeScreenshot } = useDate()
+  const ref = useRef(null)
+
+  useEffect(() => {
+    takeScreenshot(ref.current)
+  }, [selected])
 
   if (!selected | !dates.length) {
-    return null
+    return <div ref={ref}></div>
   }
 
   const handleSubmit = (event) => {
@@ -30,22 +37,22 @@ const DatePage = () => {
         <div className="w-100">
           <h2 className="text-center text-2xl font-medium underline">Answer format</h2>
           <h3 className="text-lg mt-3 font-medium text-red-800">
-            Tanggal berapa <span className="underline">hari ini</span>? (08/05/2023)
+            Tanggal berapa <span className="bg-yellow-400">hari ini</span>? (08/05/2023)
           </h3>
           <div>
             <p className="pl-2">- delapan mei dua ribu dua puluh tiga</p>
             <p className="pl-2">
-              - <span className="underline">hari ini tanggal</span> delapan mei dua ribu dua puluh
-              tiga
+              - <span className="bg-yellow-400">hari ini tanggal</span> delapan mei dua ribu dua
+              puluh tiga
             </p>
           </div>
           <h3 className="text-lg mt-3 font-medium text-red-800">
-            Hari apa <span className="underline">kemarin</span>? (monday)
+            Hari apa <span className="bg-green-400">kemarin</span>? (monday)
           </h3>
           <div>
             <p className="pl-2">- senin</p>
             <p className="pl-2">
-              - <span className="underline">kemarin hari</span> senin
+              - <span className="bg-green-400">kemarin hari</span> senin
             </p>
           </div>
           <div className="mt-4 mx-auto flex justify-center">
@@ -70,7 +77,10 @@ const DatePage = () => {
           onClick={openHelp}
         />
       </div>
-      <div className="border border-gray-800">
+      <div
+        className="border border-gray-800"
+        ref={ref}
+      >
         <h2 className="text-2xl font-bold text-center bg-gray-800 text-white py-1 font-ubuntu">
           {getYear(selected)}
         </h2>
