@@ -42,7 +42,7 @@ export const useTime = () => {
 
   const checkAnswer = (userAnswer) => {
     if (selected.text.includes(formatText(userAnswer)) || selected.digit === userAnswer) {
-      toast.success('Correct!')
+      toast.success('Correct!', { id: 'toastid' })
       correctSound.play()
     } else {
       toast.custom(
@@ -63,7 +63,7 @@ export const useTime = () => {
             </p>
           </Toast>
         ),
-        { duration: 6000 }
+        { duration: 6000, id: 'toastid' }
       )
       wrongSound.play()
     }
