@@ -34,7 +34,7 @@ export function numberToText(number) {
 
   if (number >= 1000) {
     const thousands = Math.floor(number / 1000)
-    result += thousands === 1 ? 'seribu' : ones[thousands] + ' ribu '
+    result += thousands === 1 ? 'seribu ' : ones[thousands] + ' ribu '
     number %= 1000
   }
 
