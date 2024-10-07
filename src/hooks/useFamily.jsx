@@ -4,6 +4,8 @@ import { getRandomNumber, shuffleArray } from '../lib/getRandom'
 import { correctSound, wrongSound } from '../lib/sounds'
 import Toast from '../components/Toast'
 import { allAnswers, relationShips } from '../data/family'
+import { useScreenshot } from 'use-react-screenshot'
+import { Tooltip } from 'react-tooltip'
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -16,8 +18,8 @@ const createAnswers = (correctAnswer) => {
   }
 
   while (answers.length < 4) {
-    const index = getRandomNumber(0, allAnswers.length - 1)
-    const element = allAnswers[index]
+    const index = getRandomNumber(0, Object.keys(allAnswers).length - 1)
+    const element = Object.keys(allAnswers)[index]
 
     if (!answers.includes(element)) {
       answers.push(element)
@@ -32,11 +34,20 @@ const getMembers = () => {
   let member = null
   do {
     member = getRandomNumber(1, 12)
-  } while (member - me === 0)
+  } while (
+    (member - me === 0) |
+    ((me === 3) & (member === 5)) |
+    ((me === 3) & (member === 6)) |
+    ((me === 4) & (member === 6)) |
+    ((me === 5) & (member === 3)) |
+    ((me === 6) & (member === 3)) |
+    ((me === 6) & (member === 4))
+  )
   return [me, member]
 }
 
 export const useFamily = () => {
+  const [image, takeScreenshot] = useScreenshot()
   const [relation, setRelation] = useState({
     me: null,
     member: null,
@@ -65,16 +76,43 @@ export const useFamily = () => {
       toast.custom(
         (t) => (
           <Toast t={t}>
+            <Tooltip id="my-tooltip" />
+            <img
+              src={image}
+              className="w-full border-b-2 pb-3 mb-3"
+              alt="screenshot"
+            />
             <p className="font-medium text-lg">
-              Your answer: <span className="text-red-700 font-normal">{userAnswer}</span>{' '}
+              Your answer:{' '}
+              <span
+                className="text-red-700 font-normal underline select-none"
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={allAnswers[userAnswer]}
+              >
+                {userAnswer}
+              </span>{' '}
             </p>
             <p className="font-medium text-lg">
               Right answer:{' '}
-              <span className="text-green-700 font-normal">{relation.relation.join(', ')}</span>
+              <span className="text-green-700 font-normal">
+                {relation.relation.map((el, index) => {
+                  return (
+                    <span
+                      key={el}
+                      className="select-none"
+                      data-tooltip-id="my-tooltip"
+                      data-tooltip-content={allAnswers[el]}
+                    >
+                      <span className="underline">{el}</span>
+                      {relation.relation.length - 1 !== index ? ', ' : ''}
+                    </span>
+                  )
+                })}
+              </span>
             </p>
           </Toast>
         ),
-        { duration: 6000, id: 'toastid' }
+        { duration: Infinity, id: 'toastid' }
       )
       wrongSound.play()
     }
@@ -86,5 +124,5 @@ export const useFamily = () => {
     getNewRelation()
   }, [])
 
-  return { relation, answers, checkAnswer }
+  return { relation, answers, checkAnswer, takeScreenshot }
 }

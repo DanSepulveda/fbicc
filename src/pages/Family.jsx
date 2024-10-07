@@ -1,9 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable react/prop-types */
 import { Tooltip } from 'react-tooltip'
 import { useFamily } from '../hooks/useFamily'
 import { useListeners } from '../hooks/useListener'
 import ResponseButton from '../components/ResponseButton'
+import { useEffect, useRef } from 'react'
 
-/* eslint-disable react/prop-types */
 const Person = ({ img, id, relation }) => {
   return (
     <div
@@ -21,12 +23,17 @@ const Person = ({ img, id, relation }) => {
 
 const Family = () => {
   useListeners()
-  const { relation, answers, checkAnswer } = useFamily()
+  const { relation, answers, checkAnswer, takeScreenshot } = useFamily()
+  const ref = useRef(null)
 
   const handleSubmit = (event) => {
     const userResponse = event.currentTarget.dataset.answer
     checkAnswer(userResponse)
   }
+
+  useEffect(() => {
+    takeScreenshot(ref.current)
+  }, [relation])
 
   return (
     <div>
@@ -53,7 +60,10 @@ const Family = () => {
           </p>
         </div>
       </div>
-      <div className="flex flex-col items-center gap-1">
+      <div
+        className="flex flex-col items-center gap-1"
+        ref={ref}
+      >
         <div className="flex justify-center gap-3">
           <Person
             img="grandpa"
