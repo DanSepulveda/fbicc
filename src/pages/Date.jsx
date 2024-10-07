@@ -35,7 +35,7 @@ const DatePage = () => {
     toast(
       (t) => (
         <div className="w-100">
-          <h2 className="text-center text-2xl font-medium underline">Answer format</h2>
+          <h2 className="text-center text-2xl font-medium border-b-2">Answer format</h2>
           <h3 className="text-lg mt-3 font-medium text-red-800">
             Tanggal berapa <span className="bg-yellow-400">hari ini</span>? (08/05/2023)
           </h3>
