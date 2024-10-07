@@ -3,9 +3,12 @@ import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import { FaCircleQuestion } from 'react-icons/fa6'
+import toast from 'react-hot-toast'
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()
+  console.log(selected)
 
   const handleSubmit = (event) => {
     event.preventDefault()
@@ -17,9 +20,45 @@ const TimeToText = () => {
     }
   }
 
+  const openHelp = () => {
+    toast(
+      (t) => (
+        <div className="w-100">
+          <h2 className="text-center text-2xl font-medium border-b-2">Time format</h2>
+          <h3 className="text-lg mt-3 font-medium text-red-800">lebih</h3>
+          <div>
+            <p className="font-medium">It will always be considered correct</p>
+          </div>
+          <h3 className="text-lg mt-3 font-medium text-red-800">kurang</h3>
+          <div>
+            <p className="font-medium">It will be considered correct when minutes is above 30</p>
+            <p className="text-green-600">(10:55) jam sebelas kurang lima</p>
+            <p className="text-green-600">(7:38) jam delapan kurang dua puluh dua</p>
+            <p className="text-red-600">(4:30) jam lima kurang tiga puluh</p>
+            <p className="text-red-600">(6:18) jam tujuh kurang empat puluh dua</p>
+          </div>
+          <div className="mt-4 mx-auto flex justify-center">
+            <Button onClick={() => toast.dismiss(t.id)}>Close</Button>
+          </div>
+        </div>
+      ),
+      {
+        position: 'top-center',
+        duration: Infinity,
+        id: 'toastid'
+      }
+    )
+  }
+
   return (
     <div>
       <Tooltip id="my-tooltip" />
+      <div className="mb-3">
+        <FaCircleQuestion
+          className="text-blue-900 ml-auto text-xl cursor-pointer hover:text-blue-800"
+          onClick={openHelp}
+        />
+      </div>
       <Box
         title={
           <span

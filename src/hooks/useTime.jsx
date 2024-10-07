@@ -13,9 +13,8 @@ const createAnswers = (correctAnswer) => {
   const minute = Number(correctAnswer.split(':')[1])
   const number = hour === 12 ? 1 : hour + 1
   answers.push(`${number}:${minute < 10 ? '0' + minute : minute}`)
-  answers.push(`${hour}:${60 - minute < 10 ? '0' + 60 - minute : 60 - minute}`)
-  answers.push(`${number}:${60 - minute < 10 ? '0' + 60 - minute : 60 - minute}`)
-
+  answers.push(`${hour}:${minute > 50 ? '0'.concat(60 - minute) : 60 - minute}`)
+  answers.push(`${number}:${minute > 50 ? '0'.concat(60 - minute) : 60 - minute}`)
   return shuffleArray(answers)
 }
 
@@ -63,7 +62,7 @@ export const useTime = () => {
             </p>
           </Toast>
         ),
-        { duration: 6000, id: 'toastid' }
+        { duration: Infinity, id: 'toastid' }
       )
       wrongSound.play()
     }
