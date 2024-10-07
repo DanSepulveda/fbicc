@@ -55,7 +55,7 @@ export const useDigit = () => {
             </p>
           </Toast>
         ),
-        { duration: 6000, id: 'toastid' }
+        { duration: Infinity, id: 'toastid' }
       )
       wrongSound.play()
     }
