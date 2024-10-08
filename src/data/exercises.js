@@ -33,12 +33,12 @@ export const exercises = [
     name: 'Poisi',
     image: 'radar.png',
     link: '/position'
+  },
+  {
+    name: 'Kosakata',
+    image: 'dictionary.png',
+    link: '/vocabulary'
   }
-  // {
-  //   name: 'Kosakata',
-  //   image: 'dictionary.png',
-  //   link: '/vocabulary'
-  // }
   // {
   //   name: 'Arah',
   //   image: 'directions.png',
