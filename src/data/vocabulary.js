@@ -6,12 +6,7 @@ export const vocabulary = {
     { indonesian: 'gampang', english: 'easy' },
     { indonesian: 'menyenangkan', english: 'fun' },
     { indonesian: 'kosakata', english: 'vocabulary' },
-    { indonesian: 'struktur kalimat', english: 'sentence structure' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' }
+    { indonesian: 'struktur kalimat', english: 'sentence structure' }
   ],
   class2: [
     { indonesian: 'aku', english: 'I (less formal)' },
@@ -248,11 +243,7 @@ export const vocabulary = {
     { indonesian: 'rasa', english: 'flavor' }, // !left
     { indonesian: 'segar', english: 'refreshing' }, // !left
     { indonesian: 'tawar', english: 'tasteless' }, // !left
-    { indonesian: 'teh', english: 'tea' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' },
-    { indonesian: '', english: '' }
+    { indonesian: 'teh', english: 'tea' }
   ]
 }
 
