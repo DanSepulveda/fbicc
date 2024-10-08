@@ -33,3 +33,12 @@ export const getRandomDate = (startDate, endDate) => {
 
   return new Date(randomTime)
 }
+
+export const shuffleWords = (arr) => {
+  const newArray = [...arr]
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[newArray[i], newArray[j]] = [newArray[j], newArray[i]]
+  }
+  return newArray
+}
