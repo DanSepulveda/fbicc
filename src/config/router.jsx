@@ -13,6 +13,8 @@ import FullAnswer from '../pages/Position/FullAnswer'
 import MultipleChoice from '../pages/Position/MultipleChoice'
 import PositionLayout from '../pages/Position/PositionLayout'
 import DatePage from '../pages/Date'
+// import Vocabulary from '../pages/Vocabulary'
+import Patterns from '../pages/Patterns'
 
 export const router = createBrowserRouter([
   {
@@ -22,7 +24,7 @@ export const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        handle: { title: 'Activities' }
+        handle: { title: 'Aktivitas' }
       },
       {
         path: '/spelling',
@@ -89,7 +91,17 @@ export const router = createBrowserRouter([
         path: '/date',
         element: <DatePage />,
         handle: { title: 'Tanggal (date)' }
+      },
+      {
+        path: '/patterns',
+        element: <Patterns />,
+        handle: { title: 'Patterns' }
       }
+      // {
+      //   path: '/vocabulary',
+      //   element: <Vocabulary />,
+      //   handle: { title: 'Kosakata' }
+      // }
     ]
   }
 ])

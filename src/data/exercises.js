@@ -1,5 +1,10 @@
 export const exercises = [
   {
+    name: 'Patterns',
+    image: 'steps.png',
+    link: '/patterns'
+  },
+  {
     name: 'Alfabet',
     image: 'alphabet.png',
     link: '/spelling'
@@ -15,20 +20,25 @@ export const exercises = [
     link: '/numbers'
   },
   {
-    name: 'Tanggal',
-    image: 'calendar.png',
-    link: '/date'
-  },
-  {
     name: 'Waktu',
     image: 'clock.png',
     link: '/time'
+  },
+  {
+    name: 'Tanggal',
+    image: 'calendar.png',
+    link: '/date'
   },
   {
     name: 'Poisi',
     image: 'radar.png',
     link: '/position'
   }
+  // {
+  //   name: 'Kosakata',
+  //   image: 'dictionary.png',
+  //   link: '/vocabulary'
+  // }
   // {
   //   name: 'Arah',
   //   image: 'directions.png',
