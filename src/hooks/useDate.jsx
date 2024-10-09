@@ -1,14 +1,14 @@
-import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
 import { addDays, format, getDay } from 'date-fns'
 import { useScreenshot } from 'use-react-screenshot'
 import { Tooltip } from 'react-tooltip'
-import Toast from '@components/Toast'
+import Help from '@components/Help'
 import TooltipText from '@components/TooltipText'
 import { dayPrepositions, days, questions } from '@data/date'
 import { getRandomDate, randomFromArray } from '@lib/getRandom'
 import { dateToText, generateDateRange } from '@lib/rangeDate'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { toast } from '@lib/toast'
 import { formatText } from '@lib/tools'
 
 export const useDate = () => {
@@ -57,50 +57,40 @@ export const useDate = () => {
       : hariRightAnswers.includes(formatText(userAnswer))
 
     if (condition) {
-      toast.success('Correct!', { id: 'toastid' })
+      toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
-        (t) => (
-          <Toast t={t}>
-            <Tooltip id="my-tooltip" />
-            <img
-              src={image}
-              className="w-full border-b-2 pb-3 mb-3"
-              alt="screenshot"
-            />
-            <p className="text-blue-600 text-center mb-1">
-              What is inside the parentheses is optional.
-            </p>
-            <p className="font-medium text-lg">
-              Your answer:{' '}
-              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>
-            </p>
-            <p className="font-medium text-lg">
-              Right answer:{' '}
-              <span className="text-green-700 font-normal">
-                {question.startsWith('Tanggal') ? (
-                  <span>
-                    <span>
-                      (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
-                      tanggal)
-                    </span>{' '}
-                    {tanggalRightAnswers[0]}
-                  </span>
-                ) : (
-                  <span>
-                    <span>
-                      (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
-                      hari)
-                    </span>{' '}
-                    {hariRightAnswers[0]}
-                  </span>
-                )}
+        <Help>
+          <Tooltip id="my-tooltip" />
+          <img
+            src={image}
+            className="w-full border-b-2 pb-3 mb-3"
+            alt="screenshot"
+          />
+          <p className="text-blue-600 text-center mb-1">
+            What is inside the parentheses is optional.
+          </p>
+          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Correct>
+            {question.startsWith('Tanggal') ? (
+              <span>
+                <span>
+                  (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
+                  tanggal)
+                </span>{' '}
+                {tanggalRightAnswers[0]}
               </span>
-            </p>
-          </Toast>
-        ),
-        { duration: Infinity, id: 'toastid' }
+            ) : (
+              <span>
+                <span>
+                  (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText> hari)
+                </span>{' '}
+                {hariRightAnswers[0]}
+              </span>
+            )}
+          </Help.Correct>
+        </Help>
       )
       wrongSound.play()
     }

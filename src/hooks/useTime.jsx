@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import Toast from '@components/Toast'
+import Help from '@components/Help'
 import { getRandomNumber, getRandomTime, shuffleArray } from '@lib/getRandom'
 import { timeToText } from '@lib/getTextTime'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { toast } from '@lib/toast'
 import { formatText } from '@lib/tools'
 
 const createAnswers = (correctAnswer) => {
@@ -41,28 +41,19 @@ export const useTime = () => {
 
   const checkAnswer = (userAnswer) => {
     if (selected.text.includes(formatText(userAnswer)) || selected.digit === userAnswer) {
-      toast.success('Correct!', { id: 'toastid' })
+      toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
-        (t) => (
-          <Toast t={t}>
-            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
-              {userAnswer.includes(':') ? selected.displayText : selected.digit}
-            </p>
-            <p className="font-medium text-lg">
-              Your answer:{' '}
-              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>
-            </p>
-            <p className="font-medium text-lg">
-              Right answer:{' '}
-              <span className="text-green-700 font-normal">
-                {userAnswer.includes(':') ? selected.digit : selected.text.join(', ')}
-              </span>
-            </p>
-          </Toast>
-        ),
-        { duration: Infinity, id: 'toastid' }
+        <Help>
+          <Help.Title className="mb-3">
+            {userAnswer.includes(':') ? selected.displayText : selected.digit}
+          </Help.Title>
+          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Correct>
+            {userAnswer.includes(':') ? selected.digit : selected.text.join(', ')}
+          </Help.Correct>
+        </Help>
       )
       wrongSound.play()
     }

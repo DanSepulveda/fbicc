@@ -1,23 +1,33 @@
 import hotToast from 'react-hot-toast'
 import { MdOutlineClose } from 'react-icons/md'
 
-export const toast = (content) => {
-  hotToast(
-    (t) => (
-      <div className="flex flex-col items-end">
-        <button
-          className="text-right text-2xl p-1 -mr-4 -mt-2 rounded-full hover:bg-red-100 transition"
-          onClick={() => hotToast.dismiss(t.id)}
+export const toast = {
+  custom: (content, position = 'top-right') =>
+    hotToast.custom(
+      (t) => (
+        <div
+          className={`${
+            t.visible ? 'animate-enter' : 'animate-leave'
+          } flex flex-col items-center  max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto  ring-1 ring-black ring-opacity-5 px-3 pt-2 pb-5`}
         >
-          <MdOutlineClose />
-        </button>
-        {content}
-      </div>
+          <div className="flex justify-end w-full">
+            <button
+              className="text-right text-2xl p-1 rounded-full hover:bg-red-100 transition"
+              onClick={() => hotToast.dismiss(t.id)}
+            >
+              <MdOutlineClose />
+            </button>
+          </div>
+          {content}
+        </div>
+      ),
+      {
+        position: position,
+        duration: Infinity,
+        id: 'toastid'
+      }
     ),
-    {
-      position: 'top-center',
-      duration: Infinity,
-      id: 'toastid'
-    }
-  )
+  success: (content) => {
+    hotToast.success(content, { id: 'toastid' })
+  }
 }

@@ -1,9 +1,9 @@
-import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
-import Toast from '@components/Toast'
+import Help from '@components/Help'
 import { getRandomNumber } from '@lib/getRandom'
 import { numberToText } from '@lib/getTextNumber'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { toast } from '@lib/toast'
 import { formatText, isNumber, isString } from '@lib/tools'
 
 export const useDigit = () => {
@@ -34,28 +34,17 @@ export const useDigit = () => {
     }
 
     if (condition) {
-      toast.success('Correct!', { id: 'toastid' })
+      toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
-        (t) => (
-          <Toast t={t}>
-            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
-              {isNumber(userAnswer) ? selected.text : selected.digit}
-            </p>
-            <p className="font-medium text-lg">
-              Your answer:{' '}
-              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
-            </p>
-            <p className="font-medium text-lg">
-              Right answer:{' '}
-              <span className="text-green-700 font-normal">
-                {isString(userAnswer) ? selected.text : selected.digit}
-              </span>
-            </p>
-          </Toast>
-        ),
-        { duration: Infinity, id: 'toastid' }
+        <Help>
+          <Help.Title className="mb-3">
+            {isNumber(userAnswer) ? selected.text : selected.digit}
+          </Help.Title>
+          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Correct>{isString(userAnswer) ? selected.text : selected.digit}</Help.Correct>
+        </Help>
       )
       wrongSound.play()
     }

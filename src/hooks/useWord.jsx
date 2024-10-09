@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import Toast from '@components/Toast'
+import Help from '@components/Help'
 import { alphabet } from '@data/alphabet'
 import { vocabulary } from '@data/vocabulary'
 import { randomFromArray } from '@lib/getRandom'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { toast } from '@lib/toast'
 import { formatText } from '@lib/tools'
 
 const spellWord = (word = '') => {
@@ -47,26 +47,17 @@ export const useWord = () => {
 
   const checkAnswer = (userAnswer) => {
     if (formatText(userAnswer) === formatText(selected.spelling)) {
-      toast.success('Correct!', { id: 'toastid' })
+      toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
-        (t) => (
-          <Toast t={t}>
-            <p className="font-medium text-xl text-center border-b mb-2 text-blue-700">
-              {selected.word}
-            </p>
-            <p className="font-medium text-lg">
-              Your answer:{' '}
-              <span className="text-red-700 font-normal">{formatText(userAnswer)}</span>{' '}
-            </p>
-            <p className="font-medium text-lg">
-              Right answer: <span className="text-green-700 font-normal">{selected.spelling}</span>
-            </p>
-          </Toast>
-        ),
-        { duration: 6000, id: 'toastid' }
+        <Help>
+          <Help.Title className="mb-3">{selected.word}</Help.Title>
+          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Correct>{selected.spelling}</Help.Correct>
+        </Help>
       )
+
       wrongSound.play()
     }
 

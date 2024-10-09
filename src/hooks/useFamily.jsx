@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { useScreenshot } from 'use-react-screenshot'
-import toast from 'react-hot-toast'
-import Toast from '@components/Toast'
+import Help from '@components/Help'
 import TooltipText from '@components/TooltipText'
 import { allAnswers, relationShips } from '@data/family'
 import { getRandomNumber, shuffleArray } from '@lib/getRandom'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { toast } from '@lib/toast'
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -71,46 +71,41 @@ export const useFamily = () => {
 
   const checkAnswer = (userAnswer) => {
     if (relation.relation.includes(userAnswer)) {
-      toast.success('Correct!', { id: 'toastid' })
+      toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
-        (t) => (
-          <Toast t={t}>
-            <Tooltip id="my-tooltip" />
-            <img
-              src={image}
-              className="w-full border-b-2 pb-3 mb-3"
-              alt="screenshot"
-            />
-            <p className="font-medium text-lg">
-              Your answer:{' '}
-              <TooltipText
-                className="text-red-700 font-normal"
-                content={allAnswers[userAnswer]}
-              >
-                {userAnswer}
-              </TooltipText>{' '}
-            </p>
-            <p className="font-medium text-lg">
-              Right answer:{' '}
-              <span className="text-green-700 font-normal">
-                {relation.relation.map((el, index) => {
-                  return (
-                    <TooltipText
-                      key={el}
-                      content={allAnswers[el]}
-                    >
-                      <span className="underline">{el}</span>
-                      {relation.relation.length - 1 !== index ? ', ' : ''}
-                    </TooltipText>
-                  )
-                })}
-              </span>
-            </p>
-          </Toast>
-        ),
-        { duration: Infinity, id: 'toastid' }
+        <Help>
+          <Tooltip id="my-tooltip" />
+          <img
+            src={image}
+            className="w-full border-b-2 pb-3 mb-3"
+            alt="screenshot"
+          />
+          <Help.Wrong>
+            <TooltipText
+              className="text-red-700 font-normal"
+              content={allAnswers[userAnswer]}
+            >
+              {userAnswer}
+            </TooltipText>
+          </Help.Wrong>
+          <Help.Correct>
+            <span className="text-green-700 font-normal">
+              {relation.relation.map((el, index) => {
+                return (
+                  <TooltipText
+                    key={el}
+                    content={allAnswers[el]}
+                  >
+                    <span className="underline">{el}</span>
+                    {relation.relation.length - 1 !== index ? ', ' : ''}
+                  </TooltipText>
+                )
+              })}
+            </span>
+          </Help.Correct>
+        </Help>
       )
       wrongSound.play()
     }

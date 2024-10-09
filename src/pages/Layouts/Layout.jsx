@@ -35,7 +35,7 @@ const Layout = () => {
         {help ? (
           <FaCircleQuestion
             className="text-gray-700 hover:text-gray-800 transition text-2xl cursor-pointer"
-            onClick={() => toast(help)}
+            onClick={() => toast.custom(help, 'top-center')}
           />
         ) : null}
       </section>
