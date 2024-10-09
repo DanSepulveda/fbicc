@@ -1,14 +1,15 @@
+import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
+import { addDays, format, getDay } from 'date-fns'
 import { useScreenshot } from 'use-react-screenshot'
+import { Tooltip } from 'react-tooltip'
+import Toast from '../components/Toast'
+import TooltipText from '../components/TooltipText'
 import { getRandomDate, randomFromArray } from '../lib/getRandom'
 import { dateToText, generateDateRange } from '../lib/rangeDate'
 import { dayPrepositions, days, questions } from '../data/date'
-import { addDays, format, getDay } from 'date-fns'
 import { formatText } from '../lib/tools'
-import toast from 'react-hot-toast'
 import { correctSound, wrongSound } from '../lib/sounds'
-import Toast from '../components/Toast'
-import { Tooltip } from 'react-tooltip'
 
 export const useDate = () => {
   const [image, takeScreenshot] = useScreenshot()
@@ -81,14 +82,7 @@ export const useDate = () => {
                 {question.startsWith('Tanggal') ? (
                   <span>
                     <span>
-                      (
-                      <span
-                        className="underline select-none"
-                        data-tooltip-id="my-tooltip"
-                        data-tooltip-content={dayPrepositions[when].english}
-                      >
-                        {when}
-                      </span>{' '}
+                      (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
                       tanggal)
                     </span>{' '}
                     {tanggalRightAnswers[0]}
@@ -96,14 +90,7 @@ export const useDate = () => {
                 ) : (
                   <span>
                     <span>
-                      (
-                      <span
-                        className="underline select-none"
-                        data-tooltip-id="my-tooltip"
-                        data-tooltip-content={dayPrepositions[when].english}
-                      >
-                        {when}
-                      </span>{' '}
+                      (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
                       hari)
                     </span>{' '}
                     {hariRightAnswers[0]}

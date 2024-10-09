@@ -3,6 +3,7 @@ import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import TooltipText from '../../components/TooltipText'
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()
@@ -21,15 +22,7 @@ const TimeToText = () => {
     <div>
       <Tooltip id="my-tooltip" />
       <Box
-        title={
-          <span
-            className="underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="waktu = time"
-          >
-            WAKTU
-          </span>
-        }
+        title={<TooltipText content="waktu = time">WAKTU</TooltipText>}
         text={selected.digit}
       />
       <form
@@ -37,15 +30,7 @@ const TimeToText = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={
-            <span
-              className="underline select-none"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content="jabawan = answer"
-            >
-              Jabawan
-            </span>
-          }
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="time"
           placeholder="Contoh: jam dua lebih tiga puluh satu"
           message={

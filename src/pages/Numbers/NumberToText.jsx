@@ -3,6 +3,7 @@ import { useDigit } from '../../hooks/useDigit'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import TooltipText from '../../components/TooltipText'
 
 const NumberToText = () => {
   const { selected, checkAnswer, limit, setLimit } = useDigit()
@@ -22,13 +23,7 @@ const NumberToText = () => {
       <Tooltip id="my-tooltip" />
       <div className="flex gap-2.5 border-2 border-gray-700 rounded py-2 px-1.5 mb-4">
         <div className="flex flex-col justify-center items-center text-lg font-medium text-gray-800">
-          <span
-            className="underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="sampai = until"
-          >
-            Sampai
-          </span>
+          <TooltipText content="sampai = until">Sampai</TooltipText>
           <span>{limit}</span>
         </div>
         <input
@@ -41,15 +36,7 @@ const NumberToText = () => {
         />
       </div>
       <Box
-        title={
-          <span
-            className="underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="angka = number"
-          >
-            ANGKA
-          </span>
-        }
+        title={<TooltipText content="angka = number">ANGKA</TooltipText>}
         text={selected.digit}
       />
 
@@ -58,15 +45,7 @@ const NumberToText = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={
-            <span
-              className="underline select-none"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content="jabawan = answer"
-            >
-              Jabawan
-            </span>
-          }
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="number"
           placeholder="Contoh: dua puluh lima"
         />

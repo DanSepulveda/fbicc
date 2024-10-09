@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
-import toast from 'react-hot-toast'
-import { getRandomNumber, shuffleArray } from '../lib/getRandom'
-import { correctSound, wrongSound } from '../lib/sounds'
-import Toast from '../components/Toast'
-import { allAnswers, relationShips } from '../data/family'
-import { useScreenshot } from 'use-react-screenshot'
 import { Tooltip } from 'react-tooltip'
+import { useScreenshot } from 'use-react-screenshot'
+import toast from 'react-hot-toast'
+import Toast from '../components/Toast'
+import TooltipText from '../components/TooltipText'
+import { correctSound, wrongSound } from '../lib/sounds'
+import { getRandomNumber, shuffleArray } from '../lib/getRandom'
+import { allAnswers, relationShips } from '../data/family'
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -84,28 +85,25 @@ export const useFamily = () => {
             />
             <p className="font-medium text-lg">
               Your answer:{' '}
-              <span
-                className="text-red-700 font-normal underline select-none"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={allAnswers[userAnswer]}
+              <TooltipText
+                className="text-red-700 font-normal"
+                content={allAnswers[userAnswer]}
               >
                 {userAnswer}
-              </span>{' '}
+              </TooltipText>{' '}
             </p>
             <p className="font-medium text-lg">
               Right answer:{' '}
               <span className="text-green-700 font-normal">
                 {relation.relation.map((el, index) => {
                   return (
-                    <span
+                    <TooltipText
                       key={el}
-                      className="select-none"
-                      data-tooltip-id="my-tooltip"
-                      data-tooltip-content={allAnswers[el]}
+                      content={allAnswers[el]}
                     >
                       <span className="underline">{el}</span>
                       {relation.relation.length - 1 !== index ? ', ' : ''}
-                    </span>
+                    </TooltipText>
                   )
                 })}
               </span>

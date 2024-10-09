@@ -1,10 +1,11 @@
 import { Tooltip } from 'react-tooltip'
-import { usePosition } from '../../hooks/usePosition'
 import { useListeners } from '../../hooks/useListener'
+import { usePosition } from '../../hooks/usePosition'
 import DisplayBox from './DisplayBox'
 import Box from '../../components/Box'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
+import TooltipText from '../../components/TooltipText'
 
 const FullAnswer = () => {
   useListeners()
@@ -34,15 +35,7 @@ const FullAnswer = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={
-            <span
-              className="underline select-none"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content="jabawan = answer"
-            >
-              Jabawan
-            </span>
-          }
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="position"
           placeholder="Contoh: kursi itu di kanan beruang"
         />

@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
+import { useEffect, useRef } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { useFamily } from '../hooks/useFamily'
 import { useListeners } from '../hooks/useListener'
 import ResponseButton from '../components/ResponseButton'
-import { useEffect, useRef } from 'react'
+import TooltipText from '../components/TooltipText'
 
 const Person = ({ img, id, relation }) => {
   return (
@@ -41,23 +42,21 @@ const Family = () => {
       <div className="flex gap-5 mb-1 justify-center">
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-green-500 rounded border"></div>
-          <p
-            className="font-medium text-gray-700 underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="saya = I"
+          <TooltipText
+            className="font-medium text-gray-700"
+            content="saya = I"
           >
             Saya
-          </p>
+          </TooltipText>
         </div>
         <div className="flex gap-1">
           <div className="h-6 w-6 bg-orange-400 rounded border"></div>
-          <p
-            className="font-medium text-gray-700 underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="anggota keluarga = family member"
+          <TooltipText
+            className="font-medium text-gray-700"
+            content="anggota keluarga = family member"
           >
             Anggota keluarga
-          </p>
+          </TooltipText>
         </div>
       </div>
       <div

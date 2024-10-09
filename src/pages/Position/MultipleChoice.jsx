@@ -1,9 +1,10 @@
 import { Tooltip } from 'react-tooltip'
-import { usePosition } from '../../hooks/usePosition'
 import { useListeners } from '../../hooks/useListener'
+import { usePosition } from '../../hooks/usePosition'
 import DisplayBox from './DisplayBox'
 import Box from '../../components/Box'
 import ResponseButton from '../../components/ResponseButton'
+import TooltipText from '../../components/TooltipText'
 
 const MultipleChoice = () => {
   useListeners()
@@ -23,21 +24,9 @@ const MultipleChoice = () => {
       </Box>
 
       <p className="text-center text-2xl font-medium">
-        <span
-          className="underline select-none"
-          data-tooltip-id="my-tooltip"
-          data-tooltip-content={selected.main.english}
-        >
-          {selected.main.name}
-        </span>{' '}
-        itu di <span className="bg-green-200">.......</span>{' '}
-        <span
-          className="underline select-none"
-          data-tooltip-id="my-tooltip"
-          data-tooltip-content={selected.secondary.english}
-        >
-          {selected.secondary.name}
-        </span>
+        <TooltipText content={selected.main.english}>{selected.main.name}</TooltipText> itu di{' '}
+        <span className="bg-green-200">.......</span>{' '}
+        <TooltipText content={selected.secondary.english}>{selected.secondary.name}</TooltipText>
       </p>
       <p className="text-center text-sm text-blue-600 mt-3">
         On a computer, you can use the numeric keypad

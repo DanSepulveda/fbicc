@@ -3,9 +3,10 @@ import { useEffect, useRef } from 'react'
 import { format, getMonth, getYear } from 'date-fns'
 import { Tooltip } from 'react-tooltip'
 import { useDate } from '../hooks/useDate'
-import { dayPrepositions, days, months } from '../data/date'
 import Button from '../components/Button'
 import Input from '../components/Input'
+import TooltipText from '../components/TooltipText'
+import { dayPrepositions, days, months } from '../data/date'
 
 const DatePage = () => {
   const { selected, dates, empty, question, when, checkAnswer, takeScreenshot } = useDate()
@@ -41,14 +42,13 @@ const DatePage = () => {
         </h2>
         <div className="grid grid-cols-7 bg-gray-700 py-0.5 text-white font-ubuntu">
           {days.map((day) => (
-            <div
+            <TooltipText
               key={day.indonesian}
-              className="text-center font-medium underline select-none"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={day.indonesian}
+              className="text-center font-medium"
+              content={day.indonesian}
             >
               {day.english}
-            </div>
+            </TooltipText>
           ))}
         </div>
         <div className="grid grid-cols-7 gap-0.5 p-1">
@@ -62,13 +62,9 @@ const DatePage = () => {
                 date.fullDate === selected ? 'bg-teal-600 text-white font-bold' : 'bg-gray-200'
               }`}
             >
-              <span
-                className="underline select-none"
-                data-tooltip-id="my-tooltip"
-                data-tooltip-content={months[getMonth(date.fullDate)]}
-              >
+              <TooltipText content={months[getMonth(date.fullDate)]}>
                 {format(date.fullDate, 'MMM')}
-              </span>
+              </TooltipText>
               <span className={date.fullDate === selected ? 'text-white' : 'text-gray-500'}>
                 {date.day}
               </span>
@@ -79,13 +75,7 @@ const DatePage = () => {
 
       <p className="text-center text-2xl font-medium mt-6 bg-red-800 py-2 rounded text-white">
         <span>{question} </span>
-        <span
-          className="underline select-none"
-          data-tooltip-id="my-tooltip"
-          data-tooltip-content={dayPrepositions[when].english}
-        >
-          {when}{' '}
-        </span>
+        <TooltipText content={dayPrepositions[when].english}>{when} </TooltipText>
         <span>?</span>
       </p>
       <form
@@ -93,15 +83,7 @@ const DatePage = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={
-            <span
-              className="underline select-none"
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content="jabawan = answer"
-            >
-              Jabawan
-            </span>
-          }
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="response"
           placeholder="Contoh: sekarang tanggal"
         />

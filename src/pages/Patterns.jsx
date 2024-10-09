@@ -7,6 +7,7 @@ import { getMeaning } from '../data/vocabulary'
 import { patterns } from '../data/patterns'
 import Box from '../components/Box'
 import Select from '../components/Select'
+import TooltipText from '../components/TooltipText'
 
 const Pattern = ({ data, double }) => {
   const getStyles = (el) => {
@@ -86,13 +87,11 @@ const Patterns = () => {
                     const meaning = getMeaning(word)
                     return (
                       <span key={`word-${index}`}>
-                        <span
-                          data-tooltip-id="my-tooltip"
-                          className={meaning ? 'underline select-none' : ''}
-                          data-tooltip-content={meaning}
-                        >
-                          {word}
-                        </span>
+                        {meaning ? (
+                          <TooltipText content={meaning}>{word}</TooltipText>
+                        ) : (
+                          <span>{word}</span>
+                        )}
                         <span className="no-underline"> </span>
                       </span>
                     )

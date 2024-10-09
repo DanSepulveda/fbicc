@@ -1,4 +1,5 @@
 import { Tooltip } from 'react-tooltip'
+import TooltipText from '../../components/TooltipText'
 
 /* eslint-disable react/prop-types */
 const DisplayBox = ({ main, position, secondary }) => {
@@ -25,32 +26,32 @@ const DisplayBox = ({ main, position, secondary }) => {
       <div className={`min-h-52 flex justify-center items-center ${styles[position]}`}>
         {position === 'diantara' ? (
           <div>
+            <TooltipText content={`${secondary.name} = ${secondary.english}`}>
+              <img
+                className={`${size} ${posSecondary} ${secondaryDepan}`}
+                src={`/images/${secondary.image}`}
+                alt={secondary.english}
+              />
+            </TooltipText>
+          </div>
+        ) : null}
+        <div>
+          <TooltipText content={`${main.name} = ${main.english}`}>
+            <img
+              className={`${size} ${posMain} ${mainDepan}`}
+              src={`/images/${main.image}`}
+              alt={main.english}
+            />
+          </TooltipText>
+        </div>
+        <div>
+          <TooltipText content={`${secondary.name} = ${secondary.english}`}>
             <img
               className={`${size} ${posSecondary} ${secondaryDepan}`}
               src={`/images/${secondary.image}`}
               alt={secondary.english}
-              data-tooltip-id="my-tooltip"
-              data-tooltip-content={`${secondary.name} = ${secondary.english}`}
             />
-          </div>
-        ) : null}
-        <div>
-          <img
-            className={`${size} ${posMain} ${mainDepan}`}
-            src={`/images/${main.image}`}
-            alt={main.english}
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content={`${main.name} = ${main.english}`}
-          />
-        </div>
-        <div>
-          <img
-            className={`${size} ${posSecondary} ${secondaryDepan}`}
-            src={`/images/${secondary.image}`}
-            alt={secondary.english}
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content={`${secondary.name} = ${secondary.english}`}
-          />
+          </TooltipText>
         </div>
       </div>
       <p className="text-green-800 text-sm text-center">

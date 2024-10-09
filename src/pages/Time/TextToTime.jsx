@@ -3,6 +3,7 @@ import { useListeners } from '../../hooks/useListener'
 import { useTime } from '../../hooks/useTime'
 import Box from '../../components/Box'
 import ResponseButton from '../../components/ResponseButton'
+import TooltipText from '../../components/TooltipText'
 
 const TextToTime = () => {
   useListeners()
@@ -17,15 +18,7 @@ const TextToTime = () => {
     <div>
       <Tooltip id="my-tooltip" />
       <Box
-        title={
-          <span
-            className="underline select-none"
-            data-tooltip-id="my-tooltip"
-            data-tooltip-content="waktu = time"
-          >
-            WAKTU
-          </span>
-        }
+        title={<TooltipText content="waktu = time">WAKTU</TooltipText>}
         text={selected.displayText}
       />
       <p className="text-center text-sm text-blue-600 mt-3">
