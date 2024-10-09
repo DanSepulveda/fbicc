@@ -201,7 +201,6 @@ export const vocabulary = {
     { indonesian: 'bundaran', english: 'roundabout' }, // !left
     { indonesian: 'dan', english: 'and' },
     { indonesian: 'depan', english: 'in front of' },
-    { indonesian: 'dimana', english: 'where' },
     { indonesian: 'jam dinding', english: 'clock' },
     { indonesian: 'kanan', english: 'right' },
     { indonesian: 'kardus', english: 'box' },
