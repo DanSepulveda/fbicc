@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
-import Card from '../components/Card'
-import { activities } from '../data/activities'
+import Card from '@components/Card'
+import { activities } from '@data/activities'
 
 const Home = () => {
   return (

@@ -2,10 +2,10 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef } from 'react'
 import { Tooltip } from 'react-tooltip'
-import { useFamily } from '../hooks/useFamily'
-import { useListeners } from '../hooks/useListener'
-import Choice from '../components/Choice'
-import TooltipText from '../components/TooltipText'
+import { useFamily } from '@hooks/useFamily'
+import { useListeners } from '@hooks/useListener'
+import Choice from '@components/Choice'
+import TooltipText from '@components/TooltipText'
 
 const Person = ({ img, id, relation }) => {
   return (

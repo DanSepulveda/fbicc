@@ -1,6 +1,6 @@
-import { useVocabulary } from '../hooks/useVocabulary'
-import Button from '../components/Button'
-import Table from '../components/Table'
+import { useVocabulary } from '@hooks/useVocabulary'
+import Button from '@components/Button'
+import Table from '@components/Table'
 
 const Vocabulary = () => {
   const { selectedWords, pairs, checkAnswer, finishRound, selectedChecks, handleCheck } =

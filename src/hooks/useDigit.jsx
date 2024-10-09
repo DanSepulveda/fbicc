@@ -1,10 +1,10 @@
 import toast from 'react-hot-toast'
 import { useEffect, useState } from 'react'
-import { getRandomNumber } from '../lib/getRandom'
-import { numberToText } from '../lib/getTextNumber'
-import { correctSound, wrongSound } from '../lib/sounds'
-import { formatText, isNumber, isString } from '../lib/tools'
-import Toast from '../components/Toast'
+import Toast from '@components/Toast'
+import { getRandomNumber } from '@lib/getRandom'
+import { numberToText } from '@lib/getTextNumber'
+import { correctSound, wrongSound } from '@lib/sounds'
+import { formatText, isNumber, isString } from '@lib/tools'
 
 export const useDigit = () => {
   const [selected, setSelected] = useState({

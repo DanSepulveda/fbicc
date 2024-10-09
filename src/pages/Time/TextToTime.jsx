@@ -1,9 +1,9 @@
 import { Tooltip } from 'react-tooltip'
-import { useListeners } from '../../hooks/useListener'
-import { useTime } from '../../hooks/useTime'
-import Box from '../../components/Box'
-import Choice from '../../components/Choice'
-import TooltipText from '../../components/TooltipText'
+import { useListeners } from '@hooks/useListener'
+import { useTime } from '@hooks/useTime'
+import Box from '@components/Box'
+import Choice from '@components/Choice'
+import TooltipText from '@components/TooltipText'
 
 const TextToTime = () => {
   useListeners()

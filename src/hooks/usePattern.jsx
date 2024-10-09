@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { patterns as initData } from '../data/patterns'
+import { patterns as initData } from '@data/patterns'
 
 export const usePattern = () => {
   const [patterns, setPatterns] = useState([])

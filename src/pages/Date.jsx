@@ -2,11 +2,11 @@
 import { useEffect, useRef } from 'react'
 import { format, getMonth, getYear } from 'date-fns'
 import { Tooltip } from 'react-tooltip'
-import { useDate } from '../hooks/useDate'
-import Button from '../components/Button'
-import Input from '../components/Input'
-import TooltipText from '../components/TooltipText'
-import { dayPrepositions, days, months } from '../data/date'
+import { useDate } from '@hooks/useDate'
+import Button from '@components/Button'
+import Input from '@components/Input'
+import TooltipText from '@components/TooltipText'
+import { dayPrepositions, days, months } from '@data/date'
 
 const DatePage = () => {
   const { selected, dates, empty, question, when, checkAnswer, takeScreenshot } = useDate()
@@ -75,17 +75,17 @@ const DatePage = () => {
 
       <p className="text-center text-2xl font-medium mt-6 bg-red-800 py-2 rounded text-white">
         <span>{question} </span>
-        <TooltipText content={dayPrepositions[when].english}>{when} </TooltipText>
-        <span>?</span>
+        <TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>
+        <span> ?</span>
       </p>
       <form
         className="flex flex-col gap-4 mt-3"
         onSubmit={handleSubmit}
       >
         <Input
-          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="response"
-          placeholder="Contoh: sekarang tanggal"
+          placeholder="Contoh: sekarang tanggal dua mei dua ribu dua puluh satu"
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>

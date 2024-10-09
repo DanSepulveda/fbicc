@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { randomFromArray } from '../lib/getRandom'
-import { correctSound, wrongSound } from '../lib/sounds'
-import { formatText } from '../lib/tools'
-import { alphabet } from '../data/alphabet'
-import Toast from '../components/Toast'
-import { vocabulary } from '../data/vocabulary'
+import Toast from '@components/Toast'
+import { alphabet } from '@data/alphabet'
+import { vocabulary } from '@data/vocabulary'
+import { randomFromArray } from '@lib/getRandom'
+import { correctSound, wrongSound } from '@lib/sounds'
+import { formatText } from '@lib/tools'
 
 const spellWord = (word = '') => {
   const letters = word.split('')

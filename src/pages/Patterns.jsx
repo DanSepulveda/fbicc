@@ -1,14 +1,14 @@
 /* eslint-disable react/prop-types */
 import { Fragment } from 'react'
 import { Tooltip } from 'react-tooltip'
-import { usePattern } from '../hooks/usePattern'
 import { MdChevronRight } from 'react-icons/md'
-import Box from '../components/Box'
-import Select from '../components/Select'
-import TooltipText from '../components/TooltipText'
-import { cleanPattern } from '../lib/tools'
-import { patterns } from '../data/patterns'
-import { getMeaning } from '../data/vocabulary'
+import { usePattern } from '@hooks/usePattern'
+import Box from '@components/Box'
+import Select from '@components/Select'
+import TooltipText from '@components/TooltipText'
+import { patterns } from '@data/patterns'
+import { getMeaning } from '@data/vocabulary'
+import { cleanPattern } from '@lib/tools'
 
 const Pattern = ({ data, double }) => {
   const getStyles = (el) => {

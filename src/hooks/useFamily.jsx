@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { useScreenshot } from 'use-react-screenshot'
 import toast from 'react-hot-toast'
-import Toast from '../components/Toast'
-import TooltipText from '../components/TooltipText'
-import { correctSound, wrongSound } from '../lib/sounds'
-import { getRandomNumber, shuffleArray } from '../lib/getRandom'
-import { allAnswers, relationShips } from '../data/family'
+import Toast from '@components/Toast'
+import TooltipText from '@components/TooltipText'
+import { allAnswers, relationShips } from '@data/family'
+import { getRandomNumber, shuffleArray } from '@lib/getRandom'
+import { correctSound, wrongSound } from '@lib/sounds'
 
 const createAnswers = (correctAnswer) => {
   let answers = []

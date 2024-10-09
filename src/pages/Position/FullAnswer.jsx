@@ -1,11 +1,11 @@
 import { Tooltip } from 'react-tooltip'
-import { useListeners } from '../../hooks/useListener'
-import { usePosition } from '../../hooks/usePosition'
+import { useListeners } from '@hooks/useListener'
+import { usePosition } from '@hooks/usePosition'
 import DisplayBox from './DisplayBox'
-import Box from '../../components/Box'
-import Button from '../../components/Button'
-import Input from '../../components/Input'
-import TooltipText from '../../components/TooltipText'
+import Box from '@components/Box'
+import Button from '@components/Button'
+import Input from '@components/Input'
+import TooltipText from '@components/TooltipText'
 
 const FullAnswer = () => {
   useListeners()

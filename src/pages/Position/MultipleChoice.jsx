@@ -1,11 +1,11 @@
 import { Tooltip } from 'react-tooltip'
-import { useListeners } from '../../hooks/useListener'
-import { usePosition } from '../../hooks/usePosition'
+import { useListeners } from '@hooks/useListener'
+import { usePosition } from '@hooks/usePosition'
 import DisplayBox from './DisplayBox'
-import Box from '../../components/Box'
-import Choice from '../../components/Choice'
-import Highlight from '../../components/Highlight'
-import TooltipText from '../../components/TooltipText'
+import Box from '@components/Box'
+import Choice from '@components/Choice'
+import Highlight from '@components/Highlight'
+import TooltipText from '@components/TooltipText'
 
 const MultipleChoice = () => {
   useListeners()

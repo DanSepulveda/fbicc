@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import toast from 'react-hot-toast'
-import { getRandomNumber, shuffleArray } from '../lib/getRandom'
-import { correctSound, wrongSound } from '../lib/sounds'
-import { allObjects, allPositions } from '../data/position'
-import { formatText } from '../lib/tools'
-import Toast from '../components/Toast'
+import Toast from '@components/Toast'
+import { allObjects, allPositions } from '@data/position'
+import { getRandomNumber, shuffleArray } from '@lib/getRandom'
+import { correctSound, wrongSound } from '@lib/sounds'
+import { formatText } from '@lib/tools'
 
 const createAnswers = (correctAnswer) => {
   let answers = []

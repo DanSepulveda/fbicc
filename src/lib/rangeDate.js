@@ -1,6 +1,6 @@
 import { addDays, subDays, getYear, getMonth, getDate, getDay } from 'date-fns'
 import { numberToText } from './getTextNumber'
-import { months } from '../data/date'
+import { months } from '@data/date'
 
 export const generateDateRange = (centerDate) => {
   const dates = []

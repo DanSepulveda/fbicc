@@ -1,10 +1,10 @@
 import { Tooltip } from 'react-tooltip'
 import { FaArrowRightLong } from 'react-icons/fa6'
-import { useWord } from '../hooks/useWord'
-import Box from '../components/Box'
-import Button from '../components/Button'
-import Input from '../components/Input'
-import TooltipText from '../components/TooltipText'
+import { useWord } from '@hooks/useWord'
+import Box from '@components/Box'
+import Button from '@components/Button'
+import Input from '@components/Input'
+import TooltipText from '@components/TooltipText'
 
 const Spelling = () => {
   const { selected, checkAnswer } = useWord()
