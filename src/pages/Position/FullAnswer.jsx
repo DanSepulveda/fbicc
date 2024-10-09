@@ -26,12 +26,11 @@ const FullAnswer = () => {
     <div>
       <Tooltip id="my-tooltip" />
       <Box>
-        <Box.Title>{`Dimana letak ${selected.main.name} itu?`}</Box.Title>
+        <Box.Title>Dimana letak {selected.main.name} itu?</Box.Title>
         <Box.Content>
           <DisplayBox {...selected} />
         </Box.Content>
       </Box>
-
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit}

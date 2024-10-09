@@ -4,6 +4,7 @@ import { usePosition } from '../../hooks/usePosition'
 import DisplayBox from './DisplayBox'
 import Box from '../../components/Box'
 import Choice from '../../components/Choice'
+import Highlight from '../../components/Highlight'
 import TooltipText from '../../components/TooltipText'
 
 const MultipleChoice = () => {
@@ -19,15 +20,15 @@ const MultipleChoice = () => {
     <div>
       <Tooltip id="my-tooltip" />
       <Box>
-        <Box.Title>{`Dimana letak ${selected.main.name} itu?`}</Box.Title>
+        <Box.Title>Dimana letak {selected.main.name} itu?</Box.Title>
         <Box.Content>
           <DisplayBox {...selected} />
         </Box.Content>
       </Box>
-
       <p className="text-center text-2xl font-medium">
-        <TooltipText content={selected.main.english}>{selected.main.name}</TooltipText> itu di{' '}
-        <span className="bg-green-200">.......</span>{' '}
+        <TooltipText content={selected.main.english}>{selected.main.name}</TooltipText>
+        <span> itu di </span>
+        <Highlight>.......</Highlight>{' '}
         <TooltipText content={selected.secondary.english}>{selected.secondary.name}</TooltipText>
       </p>
       <Choice>

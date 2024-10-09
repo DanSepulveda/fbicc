@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import { Tooltip } from 'react-tooltip'
 import TooltipText from '../../components/TooltipText'
 
-/* eslint-disable react/prop-types */
 const DisplayBox = ({ main, position, secondary }) => {
   const styles = {
     kiri: 'gap-6',
