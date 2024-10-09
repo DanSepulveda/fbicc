@@ -10,7 +10,7 @@ const DisplayBox = ({ main, position, secondary }) => {
     kanan: 'flex-row-reverse gap-6',
     belakang: 'flex-row-reverse',
     depan: '',
-    diantara: ''
+    antara: ''
   }
 
   const size = (position === 'bawah') | (position === 'atas') ? 'h-20' : 'h-24'
@@ -24,7 +24,7 @@ const DisplayBox = ({ main, position, secondary }) => {
     <div>
       <Tooltip id="my-tooltip" />
       <div className={`min-h-52 flex justify-center items-center ${styles[position]}`}>
-        {position === 'diantara' ? (
+        {position === 'antara' ? (
           <div>
             <TooltipText content={`${secondary.name} = ${secondary.english}`}>
               <img

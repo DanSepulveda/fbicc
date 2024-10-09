@@ -189,34 +189,34 @@ export const vocabulary = {
     { indonesian: 'jam berapa', english: 'what time', tags: [] }
   ],
   class6: [
-    { indonesian: 'antara', english: 'between', tags: [] },
-    { indonesian: 'atas', english: 'on, above', tags: [] },
+    { indonesian: 'antara', english: 'between', tags: ['posi'] },
+    { indonesian: 'atas', english: 'on, above', tags: ['posi'] },
     { indonesian: 'bank', english: 'bank', tags: [] },
-    { indonesian: 'bawah', english: 'under', tags: [] },
-    { indonesian: 'belakang', english: 'behind', tags: [] },
+    { indonesian: 'bawah', english: 'under', tags: ['posi'] },
+    { indonesian: 'belakang', english: 'behind', tags: ['posi'] },
     { indonesian: 'belok kanan', english: 'turn right', tags: [] }, // !left
     { indonesian: 'belok kiri', english: 'turn left', tags: [] }, // !left
     { indonesian: 'berhenti', english: 'stop', tags: [] }, // !left
-    { indonesian: 'beruang', english: 'bear', tags: [] },
+    { indonesian: 'beruang', english: 'bear', tags: ['apo'], image: 'bear.png' },
     { indonesian: 'bundaran', english: 'roundabout', tags: [] }, // !left
     { indonesian: 'dan', english: 'and', tags: [] },
-    { indonesian: 'depan', english: 'in front of', tags: [] },
-    { indonesian: 'jam dinding', english: 'clock', tags: [] },
-    { indonesian: 'kanan', english: 'right', tags: [] },
-    { indonesian: 'kardus', english: 'box', tags: [] },
-    { indonesian: 'kiri', english: 'left', tags: [] },
-    { indonesian: 'kursi', english: 'chair', tags: [] },
+    { indonesian: 'depan', english: 'in front of', tags: ['posi'] },
+    { indonesian: 'jam dinding', english: 'clock', tags: ['apo'], image: 'clock.png' },
+    { indonesian: 'kanan', english: 'right', tags: ['posi'] },
+    { indonesian: 'kardus', english: 'box', tags: ['apo'], image: 'box.png' },
+    { indonesian: 'kiri', english: 'left', tags: ['posi'] },
+    { indonesian: 'kursi', english: 'chair', tags: ['apo'], image: 'chair.png' },
     { indonesian: 'lurus', english: 'go straight', tags: [] }, // !left
-    { indonesian: 'meja', english: 'table', tags: [] },
+    { indonesian: 'meja', english: 'table', tags: ['apo'], image: 'table.png' },
     { indonesian: 'perempatan', english: 'intersection', tags: [] }, // !left
     { indonesian: 'pertigaan', english: 'T-junction', tags: [] }, // !left
-    { indonesian: 'pintu', english: 'door', tags: [] },
+    { indonesian: 'pintu', english: 'door', tags: ['apo'], image: 'door.png' },
     { indonesian: 'putar balik', english: 'U-turn', tags: [] }, // !left
     { indonesian: 'sebelah', english: 'next to', tags: [] }, // !left
-    { indonesian: 'sofa', english: 'sofa', tags: [] },
-    { indonesian: 'tanaman', english: 'plant', tags: [] },
+    { indonesian: 'sofa', english: 'sofa', tags: ['apo'], image: 'sofa.png' },
+    { indonesian: 'tanaman', english: 'plant', tags: ['apo'], image: 'plant.png' },
     { indonesian: 'toko buku', english: 'bookstore', tags: [] },
-    { indonesian: 'tv', english: 'tv', tags: [] },
+    { indonesian: 'tv', english: 'tv', tags: ['apo'], image: 'tv.png' },
     { indonesian: 'di mana', english: 'where (at)', tags: [] }, // !left
     { indonesian: 'dari mana', english: 'where (from)', tags: [] }, // !left
     { indonesian: 'ke mana', english: 'where (to)', tags: [] } // !left

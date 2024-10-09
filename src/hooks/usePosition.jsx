@@ -1,11 +1,21 @@
 import { useEffect, useState } from 'react'
 import Help from '@components/Help'
-import { allObjects, allPositions } from '@data/position'
 import { shuffleArray } from '@lib/arrayUtils'
 import { getRandomNumber } from '@lib/numberUtils'
 import { sanitizeText } from '@lib/stringUtils'
 import { toast } from '@lib/toast'
 import { correctSound, wrongSound } from '@lib/sounds'
+import { getWordsByTag } from '@lib/vocabUtilities'
+
+const allObjects = getWordsByTag('apo').map((el) => {
+  return {
+    name: el.indonesian,
+    english: el.english,
+    image: el.image
+  }
+})
+
+const allPositions = getWordsByTag('posi').map((el) => el.indonesian)
 
 const createAnswers = (correctAnswer) => {
   let answers = []
