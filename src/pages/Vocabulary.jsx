@@ -1,5 +1,6 @@
 import { useVocabulary } from '../hooks/useVocabulary'
 import Button from '../components/Button'
+import Table from '../components/Table'
 
 const Vocabulary = () => {
   const { selectedWords, pairs, checkAnswer, finishRound, selectedChecks, handleCheck } =
@@ -106,25 +107,22 @@ const Vocabulary = () => {
         </div>
       ) : null}
       {pairs.length ? (
-        <table className="mt-5 mx-auto w-full max-w-screen-sm">
-          <thead>
-            <tr className="w-full bg-gray-700 text-gray-50 border-b border-gray-300">
-              <th className="py-2 px-4 w-1/2 text-left font-bold uppercase text-sm">English</th>
-              <th className="py-2 px-4 w-1/2 text-left font-bold uppercase text-sm">Indonesian</th>
-            </tr>
-          </thead>
-          <tbody>
+        <Table>
+          <Table.Head>
+            <Table.Row head>
+              <Table.Heading>English</Table.Heading>
+              <Table.Heading>Indonesian</Table.Heading>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
             {pairs.map((el) => (
-              <tr
-                key={`row-${el.indonesian}`}
-                className="border-b border-gray-200 hover:bg-gray-200"
-              >
-                <td className="py-3 px-6 text-gray-700">{el.english}</td>
-                <td className="py-3 px-6 text-gray-700">{el.indonesian}</td>
-              </tr>
+              <Table.Row key={`row-${el.indonesian}`}>
+                <Table.Cell>{el.english}</Table.Cell>
+                <Table.Cell>{el.indonesian}</Table.Cell>
+              </Table.Row>
             ))}
-          </tbody>
-        </table>
+          </Table.Body>
+        </Table>
       ) : null}
     </div>
   )
