@@ -6,7 +6,7 @@ import TooltipText from '@components/TooltipText'
 import { relationship } from '@data/relationship'
 import { shuffleArray } from '@lib/arrayUtils'
 import { getRandomNumber } from '@lib/numberUtils'
-import { getWordsByTag } from '@lib/getWords'
+import { getWordsByTag } from '@lib/vocabUtilities'
 import { correctSound, wrongSound } from '@lib/sounds'
 import { toast } from '@lib/toast'
 

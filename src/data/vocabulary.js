@@ -245,11 +245,3 @@ export const vocabulary = {
     { indonesian: 'teh', english: 'tea', tags: [] }
   ]
 }
-
-export const getMeaning = (word) => {
-  const meaning = Object.values(vocabulary)
-    .flat()
-    .find((el) => el.indonesian === word.toLowerCase())
-
-  return meaning?.english ?? ''
-}

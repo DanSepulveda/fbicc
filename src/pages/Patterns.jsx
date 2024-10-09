@@ -7,7 +7,7 @@ import Box from '@components/Box'
 import Select from '@components/Select'
 import TooltipText from '@components/TooltipText'
 import { patterns } from '@data/patterns'
-import { getMeaning } from '@data/vocabulary'
+import { getMeaning } from '@lib/vocabUtilities'
 
 const cleanPattern = (text) => {
   if (text.startsWith('+') | text.startsWith('-') | text.startsWith('*')) {
