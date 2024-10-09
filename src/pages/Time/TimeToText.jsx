@@ -8,7 +8,6 @@ import toast from 'react-hot-toast'
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()
-  console.log(selected)
 
   const handleSubmit = (event) => {
     event.preventDefault()
