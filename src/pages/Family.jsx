@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { useFamily } from '../hooks/useFamily'
 import { useListeners } from '../hooks/useListener'
-import ResponseButton from '../components/ResponseButton'
+import Choice from '../components/Choice'
 import TooltipText from '../components/TooltipText'
 
 const Person = ({ img, id, relation }) => {
@@ -145,19 +145,17 @@ const Family = () => {
         <div className="h-6 w-12 bg-orange-400 rounded border"></div>
         <p className="font-medium text-2xl text-gray-700">adalah ________ku</p>
       </div>
-      <p className="text-center text-sm text-blue-600 mt-2">
-        On a computer, you can use the numeric keypad
-      </p>
-      <div className="grid grid-cols-2 max-w-md mx-auto gap-2">
+
+      <Choice>
         {answers.map((answer, index) => (
-          <ResponseButton
+          <Choice.Item
             key={index}
             answer={answer}
             index={index}
             handleSubmit={handleSubmit}
           />
         ))}
-      </div>
+      </Choice>
     </div>
   )
 }

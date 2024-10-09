@@ -23,7 +23,7 @@ const TimeToText = () => {
       <Tooltip id="my-tooltip" />
       <Box>
         <Box.Title>
-          <TooltipText content="waktu = time">WAKTU</TooltipText>
+          <TooltipText content="time">WAKTU</TooltipText>
         </Box.Title>
         <Box.Text>{selected.digit}</Box.Text>
       </Box>
@@ -32,9 +32,9 @@ const TimeToText = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="time"
           placeholder="Contoh: jam dua lebih tiga puluh satu"
+          label={<TooltipText content="answer">Jabawan</TooltipText>}
           message={
             <span>
               When possible use <span className="font-bold text-green-700">lebih</span> or{' '}

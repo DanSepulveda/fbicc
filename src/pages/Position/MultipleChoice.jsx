@@ -3,7 +3,7 @@ import { useListeners } from '../../hooks/useListener'
 import { usePosition } from '../../hooks/usePosition'
 import DisplayBox from './DisplayBox'
 import Box from '../../components/Box'
-import ResponseButton from '../../components/ResponseButton'
+import Choice from '../../components/Choice'
 import TooltipText from '../../components/TooltipText'
 
 const MultipleChoice = () => {
@@ -30,19 +30,16 @@ const MultipleChoice = () => {
         <span className="bg-green-200">.......</span>{' '}
         <TooltipText content={selected.secondary.english}>{selected.secondary.name}</TooltipText>
       </p>
-      <p className="text-center text-sm text-blue-600 mt-3">
-        On a computer, you can use the numeric keypad
-      </p>
-      <div className="grid grid-cols-2 max-w-md mx-auto gap-2">
+      <Choice>
         {answers.map((answer, index) => (
-          <ResponseButton
+          <Choice.Item
             key={index}
             answer={answer}
             index={index}
             handleSubmit={handleSubmit}
           />
         ))}
-      </div>
+      </Choice>
     </div>
   )
 }
