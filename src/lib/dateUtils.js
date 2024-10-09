@@ -1,6 +1,14 @@
-import { addDays, subDays, getYear, getMonth, getDate, getDay } from 'date-fns'
-import { numberToText } from './getTextNumber'
+import { addDays, getDate, getDay, getMonth, getYear, subDays } from 'date-fns'
 import { months } from '@data/date'
+import { numberToText } from './numberUtils'
+
+export const getRandomDate = (startDate, endDate) => {
+  const start = new Date(startDate).getTime()
+  const end = new Date(endDate).getTime()
+  const randomTime = start + Math.random() * (end - start)
+
+  return new Date(randomTime)
+}
 
 export const generateDateRange = (centerDate) => {
   const dates = []

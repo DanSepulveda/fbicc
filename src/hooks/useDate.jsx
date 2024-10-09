@@ -4,12 +4,12 @@ import { useScreenshot } from 'use-react-screenshot'
 import { Tooltip } from 'react-tooltip'
 import Help from '@components/Help'
 import TooltipText from '@components/TooltipText'
-import { dayPrepositions, days, questions } from '@data/date'
-import { getRandomDate, randomFromArray } from '@lib/getRandom'
-import { dateToText, generateDateRange } from '@lib/rangeDate'
+import { dayPrepositions, days } from '@data/date'
+import { randomFromArray } from '@lib/arrayUtils'
+import { dateToText, generateDateRange, getRandomDate } from '@lib/dateUtils'
+import { sanitizeText } from '@lib/stringUtils'
 import { correctSound, wrongSound } from '@lib/sounds'
 import { toast } from '@lib/toast'
-import { formatText } from '@lib/tools'
 
 export const useDate = () => {
   const [image, takeScreenshot] = useScreenshot()
@@ -28,7 +28,7 @@ export const useDate = () => {
       emp.push(i)
     }
 
-    const randomQuestion = randomFromArray(questions)
+    const randomQuestion = randomFromArray(['Tanggal berapa', 'Tanggal berapa', 'Hari apa'])
     const randomWhen = randomFromArray(Object.keys(dayPrepositions))
 
     setQuestion(randomQuestion)
@@ -53,8 +53,8 @@ export const useDate = () => {
     ]
 
     const condition = question.startsWith('Tanggal berapa')
-      ? tanggalRightAnswers.includes(formatText(userAnswer))
-      : hariRightAnswers.includes(formatText(userAnswer))
+      ? tanggalRightAnswers.includes(sanitizeText(userAnswer))
+      : hariRightAnswers.includes(sanitizeText(userAnswer))
 
     if (condition) {
       toast.success('Correct!')
@@ -71,24 +71,12 @@ export const useDate = () => {
           <p className="text-blue-600 text-center mb-1">
             What is inside the parentheses is optional.
           </p>
-          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Wrong>{sanitizeText(userAnswer)}</Help.Wrong>
           <Help.Correct>
-            {question.startsWith('Tanggal') ? (
-              <span>
-                <span>
-                  (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>{' '}
-                  tanggal)
-                </span>{' '}
-                {tanggalRightAnswers[0]}
-              </span>
-            ) : (
-              <span>
-                <span>
-                  (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText> hari)
-                </span>{' '}
-                {hariRightAnswers[0]}
-              </span>
-            )}
+            (<TooltipText content={dayPrepositions[when].english}>{when}</TooltipText>
+            {question.startsWith('Tanggal')
+              ? ` tanggal) ${tanggalRightAnswers[0]}`
+              : ` hari) ${hariRightAnswers[0]}`}
           </Help.Correct>
         </Help>
       )
