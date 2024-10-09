@@ -1,7 +1,7 @@
 import { Toaster } from 'react-hot-toast'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, Outlet, useMatches } from 'react-router-dom'
-import { toast } from '../lib/toast'
+import { toast } from '../../lib/toast'
 
 const Layout = () => {
   const currentYear = new Date().getFullYear()

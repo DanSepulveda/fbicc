@@ -1,22 +1,23 @@
 import { createBrowserRouter } from 'react-router-dom'
-import Layout from '../components/Layout'
-import Home from '../pages/Home'
-import Family from '../pages/Family'
-import Spelling from '../pages/Spelling'
-import NumberToText from '../pages/Numbers/NumberToText'
-import NumberLayout from '../pages/Numbers/NumberLayout'
-import TextToNumber from '../pages/Numbers/TextToNumber'
-import TimeLayout from '../pages/Time/TimeLayout'
-import TimeToText from '../pages/Time/TimeToText'
-import TextToTime from '../pages/Time/TextToTime'
-import FullAnswer from '../pages/Position/FullAnswer'
-import MultipleChoice from '../pages/Position/MultipleChoice'
-import PositionLayout from '../pages/Position/PositionLayout'
+import { FaRegClock, FaRegImage } from 'react-icons/fa6'
+import { Md123, MdAbc, MdOutlineTouchApp } from 'react-icons/md'
 import DatePage from '../pages/Date'
-import Vocabulary from '../pages/Vocabulary'
+import Family from '../pages/Family'
+import FullAnswer from '../pages/Position/FullAnswer'
+import Home from '../pages/Home'
+import Layout from '../pages/Layouts/Layout'
+import LayoutOption from '../pages/Layouts/LayoutOption'
+import MultipleChoice from '../pages/Position/MultipleChoice'
+import NumberToText from '../pages/Numbers/NumberToText'
 import Patterns from '../pages/Patterns'
+import Spelling from '../pages/Spelling'
+import TextToNumber from '../pages/Numbers/TextToNumber'
+import TextToTime from '../pages/Time/TextToTime'
+import TimeToText from '../pages/Time/TimeToText'
+import Vocabulary from '../pages/Vocabulary'
 import Help from '../components/Help'
 import Highlight from '../components/Highlight'
+import Selector from '../components/Selector'
 
 export const router = createBrowserRouter([
   {
@@ -35,8 +36,24 @@ export const router = createBrowserRouter([
       },
       {
         path: '/numbers',
-        element: <NumberLayout />,
-        handle: { title: 'Numbers exercises' },
+        element: <LayoutOption />,
+        handle: {
+          title: 'Numbers exercises',
+          options: (
+            <section className="grid grid-cols-2">
+              <Selector
+                to="/numbers/number-to-text"
+                before={<Md123 className="text-5xl" />}
+                after={<MdAbc className="text-5xl" />}
+              />
+              <Selector
+                to="/numbers/text-to-number"
+                before={<MdAbc className="text-5xl" />}
+                after={<Md123 className="text-5xl" />}
+              />
+            </section>
+          )
+        },
         children: [
           {
             path: 'text-to-number',
@@ -57,8 +74,24 @@ export const router = createBrowserRouter([
       },
       {
         path: '/time',
-        element: <TimeLayout />,
-        handle: { title: 'Time exercises' },
+        element: <LayoutOption />,
+        handle: {
+          title: 'Time exercises',
+          options: (
+            <div className="grid grid-cols-2">
+              <Selector
+                to="/time/time-to-text"
+                before={<FaRegClock className="text-xl" />}
+                after={<MdAbc className="text-5xl" />}
+              />
+              <Selector
+                to="/time/text-to-time"
+                before={<MdAbc className="text-5xl" />}
+                after={<FaRegClock className="text-xl" />}
+              />
+            </div>
+          )
+        },
         children: [
           {
             path: 'text-to-time',
@@ -94,8 +127,24 @@ export const router = createBrowserRouter([
       },
       {
         path: '/position',
-        element: <PositionLayout />,
-        handle: { title: 'Poisi (position)' },
+        element: <LayoutOption />,
+        handle: {
+          title: 'Poisi (position)',
+          options: (
+            <div className="grid grid-cols-2">
+              <Selector
+                to="/position/full-answer"
+                before={<FaRegImage className="text-xl" />}
+                after={<MdAbc className="text-5xl" />}
+              />
+              <Selector
+                to="/position/multiple-choice"
+                before={<FaRegImage className="text-xl" />}
+                after={<MdOutlineTouchApp className="text-2xl" />}
+              />
+            </div>
+          )
+        },
         children: [
           {
             path: 'full-answer',

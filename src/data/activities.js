@@ -17,12 +17,12 @@ export const activities = [
   {
     name: 'Angka',
     image: 'numbers.png',
-    link: '/numbers'
+    link: '/numbers/number-to-text'
   },
   {
     name: 'Waktu',
     image: 'clock.png',
-    link: '/time'
+    link: '/time/time-to-text'
   },
   {
     name: 'Tanggal',
@@ -32,7 +32,7 @@ export const activities = [
   {
     name: 'Poisi',
     image: 'radar.png',
-    link: '/position'
+    link: '/position/full-answer'
   },
   {
     name: 'Kosakata',
