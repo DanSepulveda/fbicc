@@ -1,29 +1,24 @@
 import { Link } from 'react-router-dom'
-import { exercises } from '../data/exercises'
+import Card from '../components/Card'
+import { activities } from '../data/activities'
 
 const Home = () => {
   return (
-    <div>
-      <div className="grid grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5">
-        {exercises.map((block) => (
-          <Link
-            key={block.name}
-            to={block.link}
-          >
-            <article className="bg-white hover:bg-red-100 transition rounded-md pt-2.5 shadow-lg">
-              <img
-                src={'/images/' + block.image}
-                className="h-12 mx-auto"
+    <ul className="grid grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-5">
+      {activities.map((block) => (
+        <li key={block.name}>
+          <Link to={block.link}>
+            <Card>
+              <Card.Image
+                src={block.image}
                 alt={block.name}
               />
-              <h2 className="text-white text-lg bg-gray-500 font-semibold font-ubuntu text-center mt-3  py-0.5 rounded-b-md">
-                {block.name}
-              </h2>
-            </article>
+              <Card.Title>{block.name}</Card.Title>
+            </Card>
           </Link>
-        ))}
-      </div>
-    </div>
+        </li>
+      ))}
+    </ul>
   )
 }
 

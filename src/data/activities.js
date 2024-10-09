@@ -1,4 +1,4 @@
-export const exercises = [
+export const activities = [
   {
     name: 'Patterns',
     image: 'steps.png',
