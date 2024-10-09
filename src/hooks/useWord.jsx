@@ -3,8 +3,9 @@ import toast from 'react-hot-toast'
 import { randomFromArray } from '../lib/getRandom'
 import { correctSound, wrongSound } from '../lib/sounds'
 import { formatText } from '../lib/tools'
-import { alphabet, wordsToSpell } from '../data/spellingWords'
+import { alphabet } from '../data/alphabet'
 import Toast from '../components/Toast'
+import { vocabulary } from '../data/vocabulary'
 
 const spellWord = (word = '') => {
   const letters = word.split('')
@@ -17,6 +18,11 @@ const spellWord = (word = '') => {
 
   return spelling.join(' ')
 }
+
+const wordsToSpell = Object.values(vocabulary)
+  .flat()
+  .filter((el) => el.indonesian.split(' ').length === 1)
+  .map((el) => el.indonesian)
 
 export const useWord = () => {
   const [words, setWords] = useState(wordsToSpell)
