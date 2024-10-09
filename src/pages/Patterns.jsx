@@ -2,6 +2,7 @@
 import { Fragment } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { usePattern } from '../hooks/usePattern'
+import { MdChevronRight } from 'react-icons/md'
 import Box from '../components/Box'
 import Select from '../components/Select'
 import TooltipText from '../components/TooltipText'
@@ -24,7 +25,7 @@ const Pattern = ({ data, double }) => {
   }
 
   return (
-    <div className={`flex gap-1 ${double ? 'mt-6' : ''}`}>
+    <li className={`flex gap-1 ${double ? 'mt-6' : ''}`}>
       {data.map((el, index) => {
         return (
           <Fragment key={el}>
@@ -33,7 +34,7 @@ const Pattern = ({ data, double }) => {
           </Fragment>
         )
       })}
-    </div>
+    </li>
   )
 }
 
@@ -49,7 +50,7 @@ const Patterns = () => {
   }
 
   return (
-    <div className="flex flex-col">
+    <div>
       <Tooltip id="my-tooltip" />
       <Select
         name="choosenPattern"
@@ -66,24 +67,28 @@ const Patterns = () => {
       </Select>
       <Box>
         <Box.Title>{selected.name}</Box.Title>
+        <Box.Content className="p-2 mx-2 border-b-2">
+          <ul className="flex flex-col items-center gap-3 mb-3">
+            {selected.components.map((el, index) => (
+              <Pattern
+                key={index}
+                data={el}
+                double={index === 2}
+              />
+            ))}
+          </ul>
+          <p className="text-green-800">{selected.usage}</p>
+        </Box.Content>
         <Box.Content>
-          <div className="p-2 mx-2 border-b-2">
-            <div className="flex flex-col items-center gap-3 mb-3">
-              {selected.components.map((el, index) => (
-                <Pattern
-                  key={index}
-                  data={el}
-                  double={index === 2}
-                />
-              ))}
-            </div>
-            <p className="text-green-800">{selected.usage}</p>
-          </div>
-          <div>
-            <h3 className="text-2xl mb-4 mt-2 font-ubuntu font-bold text-gray-700">Examples</h3>
-            <ul className="px-4 grid grid-cols-1 md:grid-cols-2 text-left gap-6 pb-4">
-              {selected.examples.map((el) => (
-                <li key={el.english}>
+          <h3 className="text-2xl mb-4 mt-2 font-ubuntu font-bold text-gray-700">Examples</h3>
+          <ul className="px-4 grid grid-cols-1 md:grid-cols-2 text-left gap-6 pb-4">
+            {selected.examples.map((el) => (
+              <li
+                key={el.english}
+                className="flex items-center mb-auto"
+              >
+                <MdChevronRight className="inline text-xl" />
+                <div>
                   <p className="text-lg font-medium text-blue-900 leading-6">
                     {el.indonesian.split('_').map((word, index) => {
                       const meaning = getMeaning(word)
@@ -100,10 +105,10 @@ const Patterns = () => {
                     })}
                   </p>
                   <p className="-mt-0.5 text-red-700">{el.english}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </Box.Content>
       </Box>
     </div>

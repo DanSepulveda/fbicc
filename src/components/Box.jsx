@@ -16,8 +16,8 @@ Box.Title = ({ children }) => {
   )
 }
 
-Box.Content = ({ children }) => {
-  return <div>{children}</div>
+Box.Content = ({ children, className }) => {
+  return <div className={className}>{children}</div>
 }
 
 Box.Text = ({ children }) => {
