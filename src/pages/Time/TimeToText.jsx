@@ -2,8 +2,30 @@ import { Tooltip } from 'react-tooltip'
 import { useTime } from '@hooks/useTime'
 import Box from '@components/Box'
 import Button from '@components/Button'
+import Help from '@components/Help'
 import Input from '@components/Input'
 import TooltipText from '@components/TooltipText'
+
+export const TimeToTextHelp = () => {
+  return (
+    <Help>
+      <Help.Title>Time format</Help.Title>
+      <Help.Subtitle>lebih</Help.Subtitle>
+      <div>
+        <Help.Text>It will always be considered correct</Help.Text>
+      </div>
+      <Help.Subtitle>kurang</Help.Subtitle>
+      <Help.List></Help.List>
+      <Help.Text>It will be considered correct when minutes is above 30</Help.Text>
+      <Help.List>
+        <Help.ListItem correct>(10:55) jam sebelas kurang lima</Help.ListItem>
+        <Help.ListItem correct>(7:38) jam delapan kurang dua puluh dua</Help.ListItem>
+        <Help.ListItem wrong>(4:30) jam lima kurang tiga puluh</Help.ListItem>
+        <Help.ListItem wrong>(6:18) jam tujuh kurang empat puluh dua</Help.ListItem>
+      </Help.List>
+    </Help>
+  )
+}
 
 const TimeToText = () => {
   const { selected, checkAnswer } = useTime()

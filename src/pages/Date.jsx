@@ -4,9 +4,37 @@ import { format, getMonth, getYear } from 'date-fns'
 import { Tooltip } from 'react-tooltip'
 import { useDate } from '@hooks/useDate'
 import Button from '@components/Button'
+import Help from '@components/Help'
+import Highlight from '@components/Highlight'
 import Input from '@components/Input'
 import TooltipText from '@components/TooltipText'
 import { dayPrepositions, days, months } from '@data/date'
+
+export const DatePageHelp = () => {
+  return (
+    <Help>
+      <Help.Title>Answer format</Help.Title>
+      <Help.Subtitle>
+        Tanggal berapa <Highlight>hari ini</Highlight>? (08/05/2023)
+      </Help.Subtitle>
+      <Help.List>
+        <Help.ListItem>delapan mei dua ribu dua puluh tiga</Help.ListItem>
+        <Help.ListItem>
+          <Highlight>hari ini tanggal</Highlight> delapan mei dua ribu dua puluh tiga
+        </Help.ListItem>
+      </Help.List>
+      <Help.Subtitle>
+        Hari apa <Highlight color="green">kemarin</Highlight>? (monday)
+      </Help.Subtitle>
+      <Help.List>
+        <Help.ListItem>senin</Help.ListItem>
+        <Help.ListItem>
+          <Highlight color="green">kemarin hari</Highlight> senin
+        </Help.ListItem>
+      </Help.List>
+    </Help>
+  )
+}
 
 const DatePage = () => {
   const { selected, dates, empty, question, when, checkAnswer, takeScreenshot } = useDate()

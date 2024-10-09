@@ -1,6 +1,26 @@
 import { useVocabulary } from '@hooks/useVocabulary'
 import Button from '@components/Button'
+import Help from '@components/Help'
 import Table from '@components/Table'
+
+export const VocabularyHelp = () => {
+  return (
+    <Help>
+      <Help.Title>Instructions</Help.Title>
+      <Help.Subtitle>Step 1</Help.Subtitle>
+      <Help.Text>
+        Use the numbers to include/exclude the vocabulary corresponding to each class.
+      </Help.Text>
+      <Help.Subtitle>Step 2</Help.Subtitle>
+      <Help.Text>
+        Pair the Indonesian words with their corresponding English translations. When you select a
+        word in English, only the Indonesian words will remain active, and vice versa.
+      </Help.Text>
+      <Help.Subtitle>Step 3</Help.Subtitle>
+      <Help.Text>When you complete the 10 pairs, you can continue with the next 10.</Help.Text>
+    </Help>
+  )
+}
 
 const Vocabulary = () => {
   const { selectedWords, pairs, checkAnswer, finishRound, selectedChecks, handleCheck } =
