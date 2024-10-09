@@ -1,7 +1,5 @@
-import { FaCircleQuestion } from 'react-icons/fa6'
-import Button from '../components/Button'
 import { useVocabulary } from '../hooks/useVocabulary'
-import toast from 'react-hot-toast'
+import Button from '../components/Button'
 
 const Vocabulary = () => {
   const { selectedWords, pairs, checkAnswer, finishRound, selectedChecks, handleCheck } =
@@ -57,52 +55,8 @@ const Vocabulary = () => {
     }
   ]
 
-  const openHelp = () => {
-    toast(
-      (t) => (
-        <div className="w-100">
-          <h2 className="text-center text-2xl font-medium border-b-2">Instructions</h2>
-          <h3 className="text-lg mt-3 font-medium text-red-800">Step 1</h3>
-          <div>
-            <p className="font-medium">
-              Use the numbers to include/exclude the vocabulary corresponding to each class.
-            </p>
-          </div>
-          <h3 className="text-lg mt-3 font-medium text-red-800">Step 2</h3>
-          <div>
-            <p className="font-medium">
-              Pair the Indonesian words with their corresponding English translations. When you
-              select a word in English, only the Indonesian words will remain active, and vice
-              versa.
-            </p>
-          </div>
-          <h3 className="text-lg mt-3 font-medium text-red-800">Step 3</h3>
-          <div>
-            <p className="font-medium">
-              When you complete the 10 pairs, you can continue with the next 10.
-            </p>
-          </div>
-          <div className="mt-4 mx-auto flex justify-center">
-            <Button onClick={() => toast.dismiss(t.id)}>Close</Button>
-          </div>
-        </div>
-      ),
-      {
-        position: 'top-center',
-        duration: Infinity,
-        id: 'toastid'
-      }
-    )
-  }
-
   return (
     <div>
-      <div>
-        <FaCircleQuestion
-          className="text-blue-900 ml-auto text-xl cursor-pointer hover:text-blue-800"
-          onClick={openHelp}
-        />
-      </div>
       <h2 className="text-center font-medium font-ubuntu">Include vocabulary by class</h2>
       <div className="grid grid-cols-6 border-2 border-gray-400 border-b-0">
         {classes.map((el, index) => (

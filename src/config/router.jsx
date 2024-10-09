@@ -15,6 +15,8 @@ import PositionLayout from '../pages/Position/PositionLayout'
 import DatePage from '../pages/Date'
 import Vocabulary from '../pages/Vocabulary'
 import Patterns from '../pages/Patterns'
+import Help from '../components/Help'
+import Highlight from '../components/Highlight'
 
 export const router = createBrowserRouter([
   {
@@ -66,7 +68,27 @@ export const router = createBrowserRouter([
           {
             path: 'time-to-text',
             element: <TimeToText />,
-            handle: { title: 'Time to text' }
+            handle: {
+              title: 'Time to text',
+              help: (
+                <Help>
+                  <Help.Title>Time format</Help.Title>
+                  <Help.Subtitle>lebih</Help.Subtitle>
+                  <div>
+                    <Help.Text>It will always be considered correct</Help.Text>
+                  </div>
+                  <Help.Subtitle>kurang</Help.Subtitle>
+                  <Help.List></Help.List>
+                  <Help.Text>It will be considered correct when minutes is above 30</Help.Text>
+                  <Help.List>
+                    <Help.ListItem correct>(10:55) jam sebelas kurang lima</Help.ListItem>
+                    <Help.ListItem correct>(7:38) jam delapan kurang dua puluh dua</Help.ListItem>
+                    <Help.ListItem wrong>(4:30) jam lima kurang tiga puluh</Help.ListItem>
+                    <Help.ListItem wrong>(6:18) jam tujuh kurang empat puluh dua</Help.ListItem>
+                  </Help.List>
+                </Help>
+              )
+            }
           }
         ]
       },
@@ -90,7 +112,32 @@ export const router = createBrowserRouter([
       {
         path: '/date',
         element: <DatePage />,
-        handle: { title: 'Tanggal (date)' }
+        handle: {
+          title: 'Tanggal (date)',
+          help: (
+            <Help>
+              <Help.Title>Answer format</Help.Title>
+              <Help.Subtitle>
+                Tanggal berapa <Highlight>hari ini</Highlight>? (08/05/2023)
+              </Help.Subtitle>
+              <Help.List>
+                <Help.ListItem>delapan mei dua ribu dua puluh tiga</Help.ListItem>
+                <Help.ListItem>
+                  <Highlight>hari ini tanggal</Highlight> delapan mei dua ribu dua puluh tiga
+                </Help.ListItem>
+              </Help.List>
+              <Help.Subtitle>
+                Hari apa <Highlight color="green">kemarin</Highlight>? (monday)
+              </Help.Subtitle>
+              <Help.List>
+                <Help.ListItem>senin</Help.ListItem>
+                <Help.ListItem>
+                  <Highlight color="green">kemarin hari</Highlight> senin
+                </Help.ListItem>
+              </Help.List>
+            </Help>
+          )
+        }
       },
       {
         path: '/patterns',
@@ -100,7 +147,28 @@ export const router = createBrowserRouter([
       {
         path: '/vocabulary',
         element: <Vocabulary />,
-        handle: { title: 'Kosakata' }
+        handle: {
+          title: 'Kosakata',
+          help: (
+            <Help>
+              <Help.Title>Instructions</Help.Title>
+              <Help.Subtitle>Step 1</Help.Subtitle>
+              <Help.Text>
+                Use the numbers to include/exclude the vocabulary corresponding to each class.
+              </Help.Text>
+              <Help.Subtitle>Step 2</Help.Subtitle>
+              <Help.Text>
+                Pair the Indonesian words with their corresponding English translations. When you
+                select a word in English, only the Indonesian words will remain active, and vice
+                versa.
+              </Help.Text>
+              <Help.Subtitle>Step 3</Help.Subtitle>
+              <Help.Text>
+                When you complete the 10 pairs, you can continue with the next 10.
+              </Help.Text>
+            </Help>
+          )
+        }
       }
     ]
   }

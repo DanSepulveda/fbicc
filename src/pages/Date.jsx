@@ -2,10 +2,8 @@
 import { useEffect, useRef } from 'react'
 import { format, getMonth, getYear } from 'date-fns'
 import { Tooltip } from 'react-tooltip'
-import { FaCircleQuestion } from 'react-icons/fa6'
 import { useDate } from '../hooks/useDate'
 import { dayPrepositions, days, months } from '../data/date'
-import toast from 'react-hot-toast'
 import Button from '../components/Button'
 import Input from '../components/Input'
 
@@ -31,52 +29,9 @@ const DatePage = () => {
     }
   }
 
-  const openHelp = () => {
-    toast(
-      (t) => (
-        <div className="w-100">
-          <h2 className="text-center text-2xl font-medium border-b-2">Answer format</h2>
-          <h3 className="text-lg mt-3 font-medium text-red-800">
-            Tanggal berapa <span className="bg-yellow-400">hari ini</span>? (08/05/2023)
-          </h3>
-          <div>
-            <p className="pl-2">- delapan mei dua ribu dua puluh tiga</p>
-            <p className="pl-2">
-              - <span className="bg-yellow-400">hari ini tanggal</span> delapan mei dua ribu dua
-              puluh tiga
-            </p>
-          </div>
-          <h3 className="text-lg mt-3 font-medium text-red-800">
-            Hari apa <span className="bg-green-400">kemarin</span>? (monday)
-          </h3>
-          <div>
-            <p className="pl-2">- senin</p>
-            <p className="pl-2">
-              - <span className="bg-green-400">kemarin hari</span> senin
-            </p>
-          </div>
-          <div className="mt-4 mx-auto flex justify-center">
-            <Button onClick={() => toast.dismiss(t.id)}>Close</Button>
-          </div>
-        </div>
-      ),
-      {
-        position: 'top-center',
-        duration: Infinity,
-        id: 'toastid'
-      }
-    )
-  }
-
   return (
     <div>
       <Tooltip id="my-tooltip" />
-      <div className="mb-3">
-        <FaCircleQuestion
-          className="text-blue-900 ml-auto text-xl cursor-pointer hover:text-blue-800"
-          onClick={openHelp}
-        />
-      </div>
       <div
         className="border border-gray-800"
         ref={ref}
