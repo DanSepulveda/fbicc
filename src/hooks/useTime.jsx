@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import Help from '@components/Help'
-import { getRandomNumber, getRandomTime, shuffleArray } from '@lib/getRandom'
-import { timeToText } from '@lib/getTextTime'
-import { correctSound, wrongSound } from '@lib/sounds'
 import { toast } from '@lib/toast'
-import { formatText } from '@lib/tools'
+import { shuffleArray } from '@lib/arrayUtils'
+import { getRandomTime, timeToText } from '@lib/dateUtils'
+import { getRandomNumber } from '@lib/numberUtils'
+import { sanitizeText } from '@lib/stringUtils'
+import { correctSound, wrongSound } from '@lib/sounds'
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -40,7 +41,7 @@ export const useTime = () => {
   }
 
   const checkAnswer = (userAnswer) => {
-    if (selected.text.includes(formatText(userAnswer)) || selected.digit === userAnswer) {
+    if (selected.text.includes(sanitizeText(userAnswer)) || selected.digit === userAnswer) {
       toast.success('Correct!')
       correctSound.play()
     } else {
@@ -49,7 +50,7 @@ export const useTime = () => {
           <Help.Title className="mb-3">
             {userAnswer.includes(':') ? selected.displayText : selected.digit}
           </Help.Title>
-          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Wrong>{sanitizeText(userAnswer)}</Help.Wrong>
           <Help.Correct>
             {userAnswer.includes(':') ? selected.digit : selected.text.join(', ')}
           </Help.Correct>

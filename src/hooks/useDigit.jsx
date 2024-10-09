@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react'
 import Help from '@components/Help'
-import { getRandomNumber } from '@lib/getRandom'
-import { numberToText } from '@lib/getTextNumber'
-import { correctSound, wrongSound } from '@lib/sounds'
+import { getRandomNumber, isNumber, numberToText } from '@lib/numberUtils'
+import { isString, sanitizeText } from '@lib/stringUtils'
 import { toast } from '@lib/toast'
-import { formatText, isNumber, isString } from '@lib/tools'
+import { correctSound, wrongSound } from '@lib/sounds'
 
 export const useDigit = () => {
   const [selected, setSelected] = useState({
@@ -26,7 +25,7 @@ export const useDigit = () => {
     let condition = null
 
     if (isString(userAnswer)) {
-      condition = formatText(userAnswer) === formatText(selected.text)
+      condition = sanitizeText(userAnswer) === sanitizeText(selected.text)
     }
 
     if (isNumber(userAnswer)) {
@@ -42,7 +41,7 @@ export const useDigit = () => {
           <Help.Title className="mb-3">
             {isNumber(userAnswer) ? selected.text : selected.digit}
           </Help.Title>
-          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Wrong>{sanitizeText(userAnswer)}</Help.Wrong>
           <Help.Correct>{isString(userAnswer) ? selected.text : selected.digit}</Help.Correct>
         </Help>
       )

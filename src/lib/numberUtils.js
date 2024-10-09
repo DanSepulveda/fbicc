@@ -1,4 +1,4 @@
-export function numberToText(number) {
+export const numberToText = (number) => {
   const ones = ['', 'satu', 'dua', 'tiga', 'empat', 'lima', 'enam', 'tujuh', 'delapan', 'sembilan']
 
   const tens = [
@@ -59,3 +59,9 @@ export function numberToText(number) {
 
   return result.trim()
 }
+
+export const getRandomNumber = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min
+}
+
+export const isNumber = (data) => typeof data === 'number'

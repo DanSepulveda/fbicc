@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { vocabulary } from '@data/vocabulary'
-import { shuffleWords } from '@lib/getRandom'
+import { isEmptyObj } from '@lib/objectUtils'
+import { shuffleWords } from '@lib/arrayUtils'
 import { correctSound, wrongSound } from '@lib/sounds'
-import { isEmptyObj } from '@lib/tools'
 
 const getValuesByKeys = (obj, keys) => {
   return keys.map((key) => obj[key]).flat()

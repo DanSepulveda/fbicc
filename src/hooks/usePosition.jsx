@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import Help from '@components/Help'
 import { allObjects, allPositions } from '@data/position'
-import { getRandomNumber, shuffleArray } from '@lib/getRandom'
-import { correctSound, wrongSound } from '@lib/sounds'
+import { shuffleArray } from '@lib/arrayUtils'
+import { getRandomNumber } from '@lib/numberUtils'
+import { sanitizeText } from '@lib/stringUtils'
 import { toast } from '@lib/toast'
-import { formatText } from '@lib/tools'
+import { correctSound, wrongSound } from '@lib/sounds'
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -53,7 +54,7 @@ export const usePosition = () => {
   const checkAnswer = (userAnswer, full = false) => {
     let condition = selected.position === userAnswer
     if (full) {
-      condition = selected.fullResponse.includes(formatText(userAnswer))
+      condition = selected.fullResponse.includes(sanitizeText(userAnswer))
     }
 
     if (condition) {

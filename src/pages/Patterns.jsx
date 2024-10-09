@@ -8,7 +8,14 @@ import Select from '@components/Select'
 import TooltipText from '@components/TooltipText'
 import { patterns } from '@data/patterns'
 import { getMeaning } from '@data/vocabulary'
-import { cleanPattern } from '@lib/tools'
+
+const cleanPattern = (text) => {
+  if (text.startsWith('+') | text.startsWith('-') | text.startsWith('*')) {
+    return text.slice(1)
+  }
+
+  return text
+}
 
 const Pattern = ({ data, double }) => {
   const getStyles = (el) => {

@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 import Help from '@components/Help'
 import { alphabet } from '@data/alphabet'
 import { vocabulary } from '@data/vocabulary'
-import { randomFromArray } from '@lib/getRandom'
+import { randomFromArray } from '@lib/arrayUtils'
+import { sanitizeText } from '@lib/stringUtils'
 import { correctSound, wrongSound } from '@lib/sounds'
 import { toast } from '@lib/toast'
-import { formatText } from '@lib/tools'
 
 const spellWord = (word = '') => {
   const letters = word.split('')
@@ -46,14 +46,14 @@ export const useWord = () => {
   }
 
   const checkAnswer = (userAnswer) => {
-    if (formatText(userAnswer) === formatText(selected.spelling)) {
+    if (sanitizeText(userAnswer) === sanitizeText(selected.spelling)) {
       toast.success('Correct!')
       correctSound.play()
     } else {
       toast.custom(
         <Help>
           <Help.Title className="mb-3">{selected.word}</Help.Title>
-          <Help.Wrong>{formatText(userAnswer)}</Help.Wrong>
+          <Help.Wrong>{sanitizeText(userAnswer)}</Help.Wrong>
           <Help.Correct>{selected.spelling}</Help.Correct>
         </Help>
       )
