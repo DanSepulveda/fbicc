@@ -2,12 +2,12 @@
 import { Fragment } from 'react'
 import { Tooltip } from 'react-tooltip'
 import { usePattern } from '../hooks/usePattern'
-import { cleanPattern } from '../lib/tools'
-import { getMeaning } from '../data/vocabulary'
-import { patterns } from '../data/patterns'
 import Box from '../components/Box'
 import Select from '../components/Select'
 import TooltipText from '../components/TooltipText'
+import { cleanPattern } from '../lib/tools'
+import { patterns } from '../data/patterns'
+import { getMeaning } from '../data/vocabulary'
 
 const Pattern = ({ data, double }) => {
   const getStyles = (el) => {
@@ -64,44 +64,47 @@ const Patterns = () => {
           </Select.Option>
         ))}
       </Select>
-      <Box title={selected.name}>
-        <div className="p-2 mx-2 border-b-2">
-          <div className="flex flex-col items-center gap-3 mb-3">
-            {selected.components.map((el, index) => (
-              <Pattern
-                key={index}
-                data={el}
-                double={index === 2}
-              />
-            ))}
+      <Box>
+        <Box.Title>{selected.name}</Box.Title>
+        <Box.Content>
+          <div className="p-2 mx-2 border-b-2">
+            <div className="flex flex-col items-center gap-3 mb-3">
+              {selected.components.map((el, index) => (
+                <Pattern
+                  key={index}
+                  data={el}
+                  double={index === 2}
+                />
+              ))}
+            </div>
+            <p className="text-green-800">{selected.usage}</p>
           </div>
-          <p className="text-green-800">{selected.usage}</p>
-        </div>
-        <div>
-          <h3 className="text-2xl mb-4 mt-2 font-ubuntu font-bold text-gray-700">Examples</h3>
-          <ul className="px-4 grid grid-cols-1 md:grid-cols-2 text-left gap-6 pb-4">
-            {selected.examples.map((el) => (
-              <li key={el.english}>
-                <p className="text-lg font-medium text-blue-900 leading-6">
-                  {el.indonesian.split('_').map((word, index) => {
-                    const meaning = getMeaning(word)
-                    return (
-                      <span key={`word-${index}`}>
-                        {meaning ? (
-                          <TooltipText content={meaning}>{word}</TooltipText>
-                        ) : (
-                          <span>{word}</span>
-                        )}
-                        <span className="no-underline"> </span>
-                      </span>
-                    )
-                  })}
-                </p>
-                <p className="-mt-0.5 text-red-700">{el.english}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div>
+            <h3 className="text-2xl mb-4 mt-2 font-ubuntu font-bold text-gray-700">Examples</h3>
+            <ul className="px-4 grid grid-cols-1 md:grid-cols-2 text-left gap-6 pb-4">
+              {selected.examples.map((el) => (
+                <li key={el.english}>
+                  <p className="text-lg font-medium text-blue-900 leading-6">
+                    {el.indonesian.split('_').map((word, index) => {
+                      const meaning = getMeaning(word)
+                      return (
+                        <span key={`word-${index}`}>
+                          {meaning ? (
+                            <TooltipText content={meaning}>{word}</TooltipText>
+                          ) : (
+                            <span>{word}</span>
+                          )}
+                          <span className="no-underline"> </span>
+                        </span>
+                      )
+                    })}
+                  </p>
+                  <p className="-mt-0.5 text-red-700">{el.english}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Box.Content>
       </Box>
     </div>
   )

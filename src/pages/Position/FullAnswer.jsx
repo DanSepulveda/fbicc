@@ -25,9 +25,11 @@ const FullAnswer = () => {
   return (
     <div>
       <Tooltip id="my-tooltip" />
-
-      <Box title={`Dimana letak ${selected.main.name} itu?`}>
-        <DisplayBox {...selected} />
+      <Box>
+        <Box.Title>{`Dimana letak ${selected.main.name} itu?`}</Box.Title>
+        <Box.Content>
+          <DisplayBox {...selected} />
+        </Box.Content>
       </Box>
 
       <form
@@ -35,9 +37,9 @@ const FullAnswer = () => {
         onSubmit={handleSubmit}
       >
         <Input
-          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="position"
           placeholder="Contoh: kursi itu di kanan beruang"
+          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>

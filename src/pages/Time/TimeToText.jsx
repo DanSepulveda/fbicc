@@ -21,10 +21,12 @@ const TimeToText = () => {
   return (
     <div>
       <Tooltip id="my-tooltip" />
-      <Box
-        title={<TooltipText content="waktu = time">WAKTU</TooltipText>}
-        text={selected.digit}
-      />
+      <Box>
+        <Box.Title>
+          <TooltipText content="waktu = time">WAKTU</TooltipText>
+        </Box.Title>
+        <Box.Text>{selected.digit}</Box.Text>
+      </Box>
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit}

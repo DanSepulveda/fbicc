@@ -35,10 +35,12 @@ const NumberToText = () => {
           onChange={(event) => setLimit(event.target.value)}
         />
       </div>
-      <Box
-        title={<TooltipText content="angka = number">ANGKA</TooltipText>}
-        text={selected.digit}
-      />
+      <Box>
+        <Box.Title>
+          <TooltipText content="angka = number">ANGKA</TooltipText>
+        </Box.Title>
+        <Box.Text>{selected.digit}</Box.Text>
+      </Box>
 
       <form
         className="flex flex-col gap-4"

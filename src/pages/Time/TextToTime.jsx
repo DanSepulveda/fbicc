@@ -17,10 +17,12 @@ const TextToTime = () => {
   return (
     <div>
       <Tooltip id="my-tooltip" />
-      <Box
-        title={<TooltipText content="waktu = time">WAKTU</TooltipText>}
-        text={selected.displayText}
-      />
+      <Box>
+        <Box.Title>
+          <TooltipText content="waktu = time">WAKTU</TooltipText>
+        </Box.Title>
+        <Box.Text>{selected.displayText}</Box.Text>
+      </Box>
       <p className="text-center text-sm text-blue-600 mt-3">
         On a computer, you can use the numeric keypad
       </p>

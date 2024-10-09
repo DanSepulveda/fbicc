@@ -20,25 +20,28 @@ const Spelling = () => {
   }
 
   return (
-    <div className="max-w-3xl mx-auto">
+    <div>
       <Tooltip id="my-tooltip" />
-      <Box
-        title={<TooltipText content="kata = word">KATA</TooltipText>}
-        text={selected.word}
-      />
+      <Box>
+        <Box.Title>
+          <TooltipText content="word">KATA</TooltipText>
+        </Box.Title>
+        <Box.Text>{selected.word}</Box.Text>
+      </Box>
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
         <Input
-          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="spelling"
           placeholder="Use a space as separator"
+          label={<TooltipText content="answer">Jabawan</TooltipText>}
           message={
-            <span className="flex items-center gap-2 text-cyan-700">
-              <TooltipText content="contoh = example">Contoh</TooltipText>
-              : kabar <FaArrowRightLong />
-              ka a be a er
+            <span className="text-cyan-700">
+              <TooltipText content="example">Contoh</TooltipText>
+              <span>
+                : kabar <FaArrowRightLong className="inline" /> ka a be a er
+              </span>
             </span>
           }
         />

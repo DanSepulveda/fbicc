@@ -18,9 +18,11 @@ const MultipleChoice = () => {
   return (
     <div>
       <Tooltip id="my-tooltip" />
-
-      <Box title={`Dimana letak ${selected.main.name} itu?`}>
-        <DisplayBox {...selected} />
+      <Box>
+        <Box.Title>{`Dimana letak ${selected.main.name} itu?`}</Box.Title>
+        <Box.Content>
+          <DisplayBox {...selected} />
+        </Box.Content>
       </Box>
 
       <p className="text-center text-2xl font-medium">
