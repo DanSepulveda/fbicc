@@ -53,6 +53,9 @@ const DisplayBox = ({ main, position, secondary }) => {
           />
         </div>
       </div>
+      <p className="text-green-800 text-sm text-center">
+        Hover over the images (tap on mobile) to see translation
+      </p>
     </div>
   )
 }
