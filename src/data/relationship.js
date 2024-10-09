@@ -1,4 +1,4 @@
-export const relationShips = {
+export const relationship = {
   1: {
     1: null,
     2: ['istri'],
@@ -167,37 +167,4 @@ export const relationShips = {
     11: ['saudara laki-laki', 'kakak laki-laki'],
     12: null
   }
-}
-
-export const allAnswers = {
-  'adik laki-laki': 'younger brother',
-  'adik perempuan': 'younger sister',
-  anak: 'child',
-  'anak bungsu': 'last child',
-  'anak laki-laki': 'son',
-  'anak perempuan': 'daughter',
-  'anak sulung': 'first child',
-  'anak tengah': 'middle child',
-  ayah: 'father',
-  'ayah mertua': 'father-in-law',
-  bibi: 'aunt',
-  cucu: 'grandchild',
-  'cucu laki-laki': 'grandson',
-  'cucu perempuan': 'granddaughter',
-  ibu: 'mother',
-  'ibu mertua': 'mother-in-law',
-  istri: 'wife',
-  kakek: 'grandfather',
-  keponakan: 'nephew/niece',
-  'keponakan laki-laki': 'nephew',
-  'keponakan perempuan': 'niece',
-  'menantu laki-laki': 'son-in-law',
-  'menantu perempuan': 'daughter-in-law',
-  nenek: 'grandmother',
-  paman: 'uncle',
-  'saudara laki-laki': 'brother',
-  'saudara perempuan': 'sister',
-  'sepupu laki-laki': 'male cousin',
-  'sepupu perempuan': 'female cousin',
-  suami: 'husband'
 }

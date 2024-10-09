@@ -3,10 +3,14 @@ import { Tooltip } from 'react-tooltip'
 import { useScreenshot } from 'use-react-screenshot'
 import Help from '@components/Help'
 import TooltipText from '@components/TooltipText'
-import { allAnswers, relationShips } from '@data/family'
+import { relationship } from '@data/relationship'
 import { getRandomNumber, shuffleArray } from '@lib/getRandom'
+import { getWordsByTag } from '@lib/getWords'
 import { correctSound, wrongSound } from '@lib/sounds'
 import { toast } from '@lib/toast'
+
+let allAnswers = {}
+getWordsByTag('awf').forEach((el) => (allAnswers[el.indonesian] = el.english))
 
 const createAnswers = (correctAnswer) => {
   let answers = []
@@ -58,7 +62,7 @@ export const useFamily = () => {
 
   const getNewRelation = () => {
     const [person1, person2] = getMembers()
-    const relation = relationShips[person1][person2]
+    const relation = relationship[person1][person2]
 
     setRelation({
       me: person1,
