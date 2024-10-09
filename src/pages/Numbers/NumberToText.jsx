@@ -23,7 +23,7 @@ const NumberToText = () => {
       <Tooltip id="my-tooltip" />
       <div className="flex gap-2.5 border-2 border-gray-700 rounded py-2 px-1.5 mb-4">
         <div className="flex flex-col justify-center items-center text-lg font-medium text-gray-800">
-          <TooltipText content="sampai = until">Sampai</TooltipText>
+          <TooltipText content="until">Sampai</TooltipText>
           <span>{limit}</span>
         </div>
         <input
@@ -37,19 +37,18 @@ const NumberToText = () => {
       </div>
       <Box>
         <Box.Title>
-          <TooltipText content="angka = number">ANGKA</TooltipText>
+          <TooltipText content="number">ANGKA</TooltipText>
         </Box.Title>
         <Box.Text>{selected.digit}</Box.Text>
       </Box>
-
       <form
         className="flex flex-col gap-4"
         onSubmit={handleSubmit}
       >
         <Input
-          label={<TooltipText content="jabawan = answer">Jabawan</TooltipText>}
           name="number"
           placeholder="Contoh: dua puluh lima"
+          label={<TooltipText content="answer">Jabawan</TooltipText>}
         />
         <div className="flex justify-center">
           <Button type="submit">Check</Button>
