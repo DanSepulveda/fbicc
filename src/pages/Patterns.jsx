@@ -6,6 +6,7 @@ import { cleanPattern } from '../lib/tools'
 import { getMeaning } from '../data/vocabulary'
 import { patterns } from '../data/patterns'
 import Box from '../components/Box'
+import Select from '../components/Select'
 
 const Pattern = ({ data, double }) => {
   const getStyles = (el) => {
@@ -49,20 +50,19 @@ const Patterns = () => {
   return (
     <div className="flex flex-col">
       <Tooltip id="my-tooltip" />
-      <select
+      <Select
         name="choosenPattern"
         onChange={handleChange}
-        className="w-full p-2 border border-gray-300 rounded-md bg-white text-gray-700 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 mb-5"
       >
         {patterns.map((pattern) => (
-          <option
+          <Select.Option
             key={pattern.name}
             value={pattern.id}
           >
             {pattern.id.split('-')[1]}. {pattern.name}
-          </option>
+          </Select.Option>
         ))}
-      </select>
+      </Select>
       <Box title={selected.name}>
         <div className="p-2 mx-2 border-b-2">
           <div className="flex flex-col items-center gap-3 mb-3">
