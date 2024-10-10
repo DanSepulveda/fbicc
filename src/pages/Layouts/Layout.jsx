@@ -1,4 +1,5 @@
-import { Toaster } from 'react-hot-toast'
+import { useEffect } from 'react'
+import hotToast, { Toaster } from 'react-hot-toast'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, Outlet, useMatches } from 'react-router-dom'
 import { toast } from '@lib/toast'
@@ -8,6 +9,10 @@ const Layout = () => {
 
   const matches = useMatches()
   const { title, help } = matches[matches.length - 1].handle
+
+  useEffect(() => {
+    hotToast.dismiss()
+  }, [title])
 
   return (
     <div className="flex flex-col h-dvh max-w-3xl mx-auto">
