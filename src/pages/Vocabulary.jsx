@@ -105,7 +105,7 @@ const Vocabulary = () => {
           </label>
         ))}
       </div>
-      <div className="flex flex-wrap gap-1 border-2 border-gray-400 p-2">
+      <div className="flex flex-wrap justify-center gap-1.5 border-2 border-gray-400 p-2">
         {selectedWords.map((el) => (
           <div
             key={`${el.lang}-${el.word}`}
