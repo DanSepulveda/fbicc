@@ -6,6 +6,7 @@ import Home from '@pages/Home'
 import Layout from '@pages/Layouts/Layout'
 import LayoutOption from '@pages/Layouts/LayoutOption'
 import MultipleChoice from '@pages/Position/MultipleChoice'
+import NotFoundPage from '@pages/NotFound'
 import NumberOptions from '@pages/Numbers/NumberOptions'
 import NumberToText from '@pages/Numbers/NumberToText'
 import Patterns from '@pages/Patterns'
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
   {
     path: '/',
     element: <Layout />,
+    errorElement: <NotFoundPage />,
     children: [
       {
         path: '/',

@@ -1,14 +1,16 @@
+/* eslint-disable react/prop-types */
 import { useEffect } from 'react'
 import hotToast, { Toaster } from 'react-hot-toast'
 import { FaCircleQuestion } from 'react-icons/fa6'
 import { Link, Outlet, useMatches } from 'react-router-dom'
 import { toast } from '@lib/toast'
 
-const Layout = () => {
+const Layout = ({ children }) => {
   const currentYear = new Date().getFullYear()
 
   const matches = useMatches()
-  const { title, help } = matches[matches.length - 1].handle
+  const title = matches[matches.length - 1]?.handle?.title
+  const help = matches[matches.length - 1]?.handle?.help
 
   useEffect(() => {
     hotToast.dismiss()
@@ -35,20 +37,20 @@ const Layout = () => {
           </Link>
         </nav>
       </header>
-      <section className="flex justify-between items-center bg-yellow-500 px-2 py-1">
-        <h1 className="text-2xl font-ubuntu font-semibold text-gray-900">{title}</h1>
-        {help ? (
-          <FaCircleQuestion
-            className="text-gray-700 hover:text-gray-800 transition text-2xl cursor-pointer"
-            onClick={() => toast.custom(help, 'top-center')}
-          />
-        ) : null}
-      </section>
+      {children ? null : (
+        <section className="flex justify-between items-center bg-yellow-500 px-2 py-1">
+          <h1 className="text-2xl font-ubuntu font-semibold text-gray-900">{title}</h1>
+          {help ? (
+            <FaCircleQuestion
+              className="text-gray-700 hover:text-gray-800 transition text-2xl cursor-pointer"
+              onClick={() => toast.custom(help, 'top-center')}
+            />
+          ) : null}
+        </section>
+      )}
 
       <main className="flex-grow p-4 px-1.5 md:px-5 bg-gray-100">
-        <div className="max-w-screen-xl mx-auto">
-          <Outlet />
-        </div>
+        <div className="max-w-screen-xl mx-auto">{children ? children : <Outlet />}</div>
       </main>
 
       <footer className="bg-gray-800 text-white p-2">
